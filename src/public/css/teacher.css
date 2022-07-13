@@ -1,0 +1,109 @@
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+button{
+  border-radius: 5px;
+  border: none;
+}
+a:hover,
+button:hover,
+.teacher input[type="date"]:hover,
+.attend_btn:hover,
+.absence_btn:hover{
+  opacity: 0.5;
+}
+
+.teacher{
+  display: flex;
+}
+.teacher>div{
+  width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #DFD3C3;
+}
+.teacher h2,
+.teacher h3{
+  text-align: center;
+  margin-bottom: 10px;
+  border-bottom: 4px solid #C7B198;
+}
+
+.error_messages{
+  padding: 5px 20px 5px 20px;
+  margin: 10px 40px 10px;
+  text-align: center;
+  background-color: #F54748;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.user_list input[type="date"]{
+  border: none;
+  border-radius: 5px;
+  height: 35px;
+  width: 70%;
+  margin: 5px 0 5px 0;
+  cursor: pointer;
+}
+.attend_btn,
+.absence_btn{
+  border-radius: 5px;
+  border: none;
+  height: 35px;
+  padding: 0 10px 0 10px;
+  cursor: pointer;
+}
+.attend_btn{
+  background-color: #FEA82F;
+}
+.absence_btn{
+  background-color: #FFC288;
+}
+
+.total_attendance input[type="date"]{
+  border: none;
+  border-radius: 5px;
+  height: 35px;
+  width: 45%;
+  margin: 5px 0 5px 0;
+  cursor: pointer;
+}
+.search_btn{
+  text-align: end;
+  margin-right: 10px;
+}
+.search_btn>button{
+  padding: 0 10px 0 10px;
+  height: 35px;
+  cursor: pointer;
+}
+.total_attendance table{
+  margin: auto;
+}
+.total_attendance table th{
+  width: 100px;
+  line-height: 30px;
+  padding-top: 15px;
+}
+.total_attendance table td
+{
+  padding: 5px 10px 5px 10px;
+}
+.total_attendance table tr{
+  border-bottom: 1px solid black;
+}
+
+@media screen and (max-width:768px) {
+  .teacher {
+      display: flex;
+      flex-direction: column;
+    }
+  .teacher>div{
+    margin-bottom: 20px;
+  }
+}

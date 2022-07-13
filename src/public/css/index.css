@@ -1,0 +1,46 @@
+h2{
+  height: 25px;
+  line-height: 25px;
+  font-size: 25px;
+  background-color: #B09B71;
+  padding: 5px;
+  margin:10px 0 10px 0;
+  border-radius: 15px 15px 0 0;
+}
+/* 毎日ブログ */
+.blog{
+  text-align: center;
+  background-color: #D8CCA3;
+  border-radius: 15px;
+}
+.blog a{
+  text-decoration: none;
+}
+.blog a:hover{
+  opacity: 0.5;
+}
+.blog>div{
+  padding-bottom: 10px;
+}
+.blog_card{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.blog_card_item{
+  width: 40%;
+  margin: 10px;
+  box-shadow: 1px 1px 5px black;
+  border-radius: 10px;
+}
+.blog h3{
+  color: black;
+  height: 20px;
+  line-height: 20px;
+  font-size: 20px;
+  background-color: #EDDFB3;
+  border-radius: 10px 10px 0 0;
+}
+.blog_card_item>img{
+  border-radius: 0 0 10px 10px;
+}

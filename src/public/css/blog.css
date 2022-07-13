@@ -1,0 +1,39 @@
+.blog{
+  background-color: #EDDFB3;
+  border-radius: 15px;
+  padding-bottom: 20px;
+}
+.blog h2{
+  text-align: center;
+  background-color: #B09B71;
+  height: 30px;
+  line-height: 30px;
+  font-style: 30px;
+  border-radius: 15px 15px 0 0;
+}
+.blog_img{
+  padding: 20px;
+}
+.blog img{
+  border-radius: 15px;
+}
+.blog p{
+  margin: 0 20px 10px 20px;
+}
+.blog_eva{
+  text-align: end;
+  margin-right: 20px;
+}
+
+.blog select,
+.blog button{
+  text-decoration: none;
+  background-color: #D8CCA3;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.blog button{
+  margin-top: 10px;
+}
+

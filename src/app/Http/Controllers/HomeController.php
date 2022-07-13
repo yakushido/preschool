@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Blog;
+
 class HomeController extends Controller
 {
     public function show()
     {
-        return view('index');
+        $blogs = Blog::paginate(4);
+        return view('index', compact('blogs'));
     }
 }

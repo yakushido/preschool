@@ -1,0 +1,14 @@
+.pagination {
+  display: inline-flex;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  justify-content: center;
+  background-color: #D8CCA3;
+}
+.pagination a{
+  text-decoration: none;
+}
+.paginate{
+  text-align: center;
+}

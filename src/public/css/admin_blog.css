@@ -1,0 +1,104 @@
+.admin_blog{
+  background-color: #EDDFB3;
+  border-radius: 15px;
+}
+.admin_blog input,
+.admin_blog textarea,
+.filelabel,
+.admin_blog button{
+  border-radius: 5px;
+}
+.admin_blog input,
+.admin_blog textarea{
+  border:none;
+  box-shadow: 1px 1px 5px #B09B71;
+}
+.admin_blog h1{
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #B09B71;
+  height: 30px;
+  line-height: 30px;
+  font-style: 30px;
+  border-radius: 15px 15px 0 0;
+}
+.admin_blog>div{
+  display: flex;
+  padding: 10px;
+}
+
+.admin_blog_add{
+  width:25%;
+  background-color: #EDDFB3;
+  border-radius: 10px;
+  height: 240px;
+  padding: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.admin_blog_add h2{
+  margin: 5px 0 5px 0;
+}
+.admin_blog_add input{
+  width: 100%;
+  height: 20px;
+}
+.admin_blog_add textarea{
+  width: 100%;
+  height: 50px;
+}
+.filelabel {
+  background-color: c;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.fileinput {
+  display: none;
+}
+.admin_blog_add--file{
+  margin:10px 0 10px 0;
+}
+.admin_blog_add--btn{
+  text-align: center;
+  margin-top: 20px;
+}
+.admin_blog_add button,
+.admin_blog_card button{
+  text-decoration: none;
+  background-color: #D8CCA3;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.admin_blog_card{
+  width: 75%;
+}
+.admin_blog_card>form>div:not(:last-child){
+  display: flex;
+  border-radius: 10px;
+  margin: 0 0 10px 20px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.admin_blog_card_img{
+  width: 60%;
+}
+.admin_blog img{
+  width: 100%;
+  border-radius: 5px 0 0 5px;
+}
+.admin_blog_card_content{
+  width: 40%;
+}
+.admin_blog_card input{
+  width: 85%;
+  height: 20px;
+  margin: 10px;
+}
+.admin_blog_card textarea{
+  width: 85%;
+  height: 100px;
+  margin: 10px;
+}
+.admin_blog_card--btn{
+  text-align: end;
+  margin: 0 10px 10px 0;
+}
