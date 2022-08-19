@@ -1,48 +1,30 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.default')
+@section('contents')
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
+<div>
+    @if( Auth::check() )
+    <h2>{{ Auth::user()['name'] }} 様</h2>
+    @elseif( !Auth::check() )
+    <h2><a href="/login">ログインはこちら</a></h2>
+    @endif
+</div>
 
-    <body>
+<div class="blog">
+    <h3>毎日ブログ</h3>
+    <div>
+        <p>このブログでは､その日の給食画像や出来事を毎日アップしています</p>
+        <div class="blog_card">
+            @foreach($blogs as $blog)
+            <a class="blog_card_item" href="/blog/{{ $blog->id }}">
+                <h4>{{ $blog['title'] }}</h4>
+                <img src="{{ Storage::url($blog->img_path) }}" alt="ブログimage">
+            </a>
+            @endforeach
+        </div>
+        {{ $blogs->links('pagination::bootstrap-4') }}
+    </div>
+</div>
 
-        <header>
 
-            <div>
-                    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-                @if (Route::has('login'))
-                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                        @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
-            </div>
-
-        </header>
-
-        <main>
-
-        </main>
-
-        <footer>
-
-            <div>
-                <a href="/admin/login">管理者用ログイン</a>
-                <a href="/teacher/login">教員用ログイン</a>
-            </div>
-
-        </footer>
-
-    </body>
-</html>
+@endsection

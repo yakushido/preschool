@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\Teacher\TeacherDashboardController;
+use App\Http\Controllers\Teacher\BlogController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[HomeController::class,'index']);
+
+// user --------------------------------------------------------------------
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -23,7 +29,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-//  admin -------------------------------------------------
+//  admin -------------------------------------------------------------------
 
 Route::prefix('admin')->name('admin.')->group(function(){
 
@@ -34,13 +40,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
     require __DIR__.'/admin.php';
 });
 
-//  teacher -------------------------------------------------
+//  teacher -------------------------------------------------------------------
 
 Route::prefix('teacher')->name('teacher.')->group(function(){
 
-    Route::get('/dashboard', function () {
-        return view('teacher.dashboard');
-    })->middleware(['auth:teachers'])->name('dashboard');
+    Route::get('/dashboard',[TeacherDashboardController::class,'index']);
+    Route::get('/blog',[BlogController::class,'index'])->name('blog');
+    Route::post('/blog/add',[BlogController::class,'add'])->name('blog.add');
     
     require __DIR__.'/teacher.php';
 });
