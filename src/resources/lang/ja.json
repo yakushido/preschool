@@ -1,0 +1,15 @@
+{
+  "Thank you.": "ご利用頂きまして誠にありがとうございます。",
+  "Verify Email Address": "メール認証をして登録を完了して下さい。",
+  "Please click the button below to verify your email address.": "下のボタンをクリックしてメールアドレスの認証を完了してください。",
+  "If you did not create an account, no further action is required.": "アカウントを作成していない場合は、何もしなくて大丈夫です。",
+  "If you’re having trouble clicking the,": "もしもボタンをクリックしてもサイトへ遷移しない場合は、",
+  "copy and paste the URL below": "下記のURLをコピーして",
+  "into your web browser:": "ブラウザで反映して下さい。",
+  "You are receiving this email because we received a password reset request for your account.": "このメールは、お客様のアカウントのパスワード再設定リクエストを受信したために送信されています。",
+  "If you did not request a password reset, no further action is required.": "パスワードの再設定を要求していない場合は、これ以上の操作は必要ありません。",
+  "This password reset link will expire in :count minutes.": "このパスワードリセットリンクは、数分で失効します。",
+  "Reset Password Notification": "パスワード再設定通知",
+  "Whoops! Something went wrong.": "おっと！ サーバーで何か問題が発生しました。"
+
+}
