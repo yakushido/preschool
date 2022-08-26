@@ -25,9 +25,15 @@
 <div class="blog_lists">
     @foreach( $blog_lists as $blog_list )
     <div>
-        <h3>{{ $blog_list['title'] }}</h3>
+        <h3><a href="{{ route('teacher.blog.detail',$blog_list['id'])  }}">{{ $blog_list['title'] }}</a></h3>
         <p>{{ $blog_list['content'] }}</p>
         <img src="{{ Storage::url($blog_list['img_path']) }}" alt="">
+    </div>
+    <div>
+        <form action="{{ route('teacher.blog.delete',$blog_list['id']) }}" method="POST">
+            @csrf
+            <button>削除</button>
+        </form>
     </div>
     @endforeach
 </div>

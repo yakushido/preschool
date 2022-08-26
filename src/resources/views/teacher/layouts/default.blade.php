@@ -11,7 +11,7 @@
 
     <header>
 
-    <h1><a href="/">ABC保育園</a></h1>
+    <h1><a href="/teacher/dashboard">ABC保育園</a></h1>
         <div class="header_login">
             @if( Auth::check() )
             <h2>{{ Auth::user()['name'] }} 様</h2>
