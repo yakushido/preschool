@@ -5,6 +5,8 @@ namespace App\Http\Controllers\teacher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Evaluation;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -39,7 +41,7 @@ class BlogController extends Controller
         return redirect()->route('teacher.blog');
     }
 
-    public function detail($id)
+    public function teacher_detail($id)
     {
         $blog_detail = Blog::find($id);
 
@@ -64,5 +66,16 @@ class BlogController extends Controller
         $blog_update->save();
 
         return redirect()->route('teacher.blog');
+    }
+
+    public function detail($id)
+    {
+        $blog_detail = Blog::find($id);
+        $evaluation = Evaluation::where('blog_id','=',$id)->where('user_id','=',Auth::id())->first();
+
+        return view('blog_detail',compact(
+            'blog_detail',
+            'evaluation'
+        ));
     }
 }

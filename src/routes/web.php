@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Calendar\HolidaySettingController;
-use App\Http\Controllers\Calendar\ExtraHolidaySettingController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EvaluationController;
 
 use App\Http\Controllers\Teacher\TeacherDashboardController;
 use App\Http\Controllers\Teacher\BlogController;
@@ -23,30 +24,28 @@ use App\Http\Controllers\Teacher\EventController;
 |
 */
 
-Route::get('/',[HomeController::class,'index']);
-//祝日設定
-Route::get('/holiday_setting', [HolidaySettingController::class,'form'])
-    ->name("holiday_setting");
-Route::post('/holiday_setting', [HolidaySettingController::class,'update'])
-    ->name("update_holiday_setting");
-    //臨時営業設定
-Route::get('/extra_holiday_setting', [ExtraHolidaySettingController::class,'form'])
-    ->name("extra_holiday_setting");
-Route::post('/extra_holiday_setting',[ExtraHolidaySettingController::class,'update'])
-    ->name("update_extra_holiday_setting");
-Route::get('/calendar/{year?}/{month?}', [EventController::class,'get'])->name('calendar');
+Route::get('/',[HomeController::class,'index'])->name('index');
+Route::get('/event/detail/{id}',[EventController::class,'event_detail'])->name('event.detail');
+Route::get('/blog/detail/{id}',[BlogController::class,'detail'])->name('blog.detail');
 
 // user --------------------------------------------------------------------
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard/{year?}/{month?}', [DashboardController::class,'get'])->name('dashboard');
+
+Route::post('/attentance/add',[AttendanceController::class,'add'])->name('attendance.add');
+Route::post('/attendance/delete',[AttendanceController::class,'delete'])->name('attendance.delete');
+Route::get('/attendance/another_day',[AttendanceController::class,'another_day_get']);
+Route::post('/attendance/update/{id}',[AttendanceController::class,'update'])->name('attendance.update');
+
+Route::post('/blog/evaluation/add/{id}',[EvaluationController::class,'add'])->name('evaluation.add');
+Route::post('/blog/evaluation/update/{id}',[EvaluationController::class,'update'])->name('evaluation.update');
+
 
 require __DIR__.'/auth.php';
 
 //  admin -------------------------------------------------------------------
 
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->middleware('auth:admins')->group(function(){
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
@@ -59,12 +58,16 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 Route::prefix('teacher')->name('teacher.')->group(function(){
 
-    Route::get('/dashboard',[TeacherDashboardController::class,'index']);
+    Route::middleware('auth:teachers')->group(function () {
+
+    Route::get('/dashboard',[TeacherDashboardController::class,'index'])->name('dashboard');
+
+    Route::get('/user_detail/{id}/{year?}/{month?}',[TeacherDashboardController::class,'user_detail'])->name('user_detail');
 
     Route::get('/blog',[BlogController::class,'index'])->name('blog');
     Route::post('/blog/add',[BlogController::class,'add'])->name('blog.add');
     Route::post('/blog/delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
-    Route::get('/blog/detail/{id}',[BlogController::class,'detail'])->name('blog.detail');
+    Route::get('/blog/detail/{id}',[BlogController::class,'teacher_detail'])->name('blog.detail');
     Route::post('/blog/update/{id}',[BlogController::class,'update'])->name('blog.update');
 
     Route::get('/photo',[PhotoController::class,'index'])->name('photo');
@@ -78,8 +81,10 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
     Route::post('/event/create',[EventController::class,'create'])->name('event.create');
     Route::post('/event/create_update/{id}',[EventController::class,'update'])->name('event.update');
     Route::post('/event/create_delete/{id}',[EventController::class,'create_delete'])->name('event.create_delete');
+    Route::get('/event/{year?}/{month?}', [EventController::class,'get'])->name('event');
+    // Route::get('/event',[EventController::class,'get'])->name('event.get');
 
-    Route::get('/event',[EventController::class,'get'])->name('event.get');
+    });
     
     require __DIR__.'/teacher.php';
 });

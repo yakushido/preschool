@@ -12,11 +12,12 @@
 
 <header>
 
+    <h1><a href="/">ABC保育園</a></h1>
     <div>
         @if (Route::has('login'))
             <div>
                 @auth
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                    <a href="{{ route('dashboard') }}">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}">Log in</a>
 

@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'team_id'
     ];
 
     /**
@@ -52,5 +53,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+    public function UserAttendances()
+    {
+        return $this->hasMany('App\Models\UserAttendance');
+    }
+
+    public function Evaluations()
+    {
+        return $this->hasMany('App\Models\Evaluation');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo('App\Models\Team');
     }
 }

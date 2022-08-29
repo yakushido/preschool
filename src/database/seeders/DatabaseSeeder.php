@@ -16,7 +16,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             BlogsTableSeeder::class,
             TeamsTableSeeder::class,
-            EventsTableSeeder::class
+            EventsTableSeeder::class,
+            AttendancesTableSeeder::class,
+            // test
+            EventDatesTableSeeder::class,
+            TeachersTableSeeder::class,
+            UsersTableSeeder::class
         ]);
     }
 }

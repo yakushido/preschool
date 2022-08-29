@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Calendar\Output\CalendarOutputView;
 use Illuminate\View\View;
 use Carbon\Carbon;
 use App\Models\Event;
@@ -12,29 +11,6 @@ use App\Models\EventDate;
 
 class EventController extends Controller
 {
-    public function index(Request $request)
-    {
-
-        //クエリーのdateを受け取る
-		$date = $request->input("date");
-
-		//dateがYYYY-MMの形式かどうか判定する
-		if($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)){
-			$date = strtotime($date . "-01");
-		}else{
-			$date = null;
-		}
-		
-		//取得出来ない時は現在(=今月)を指定する
-		if(!$date)$date = time();
-
-		//カレンダーに渡す
-		$calendar = new CalendarOutputView($date);
-
-        return view('teacher.event',[
-			"calendar" => $calendar
-		]);
-    }
 
 	/**
      * @param integer|null $year
@@ -71,7 +47,7 @@ class EventController extends Controller
 
         $event_dates = EventDate::all(); 
 
-        return view('teacher.calendar', compact(
+        return view('teacher.event.event', compact(
             'weeks',
             'dates', 
             'firstDayOfMonth',
@@ -85,7 +61,7 @@ class EventController extends Controller
 
         $events = Event::all();
 
-        return view('teacher.event_add', compact(
+        return view('teacher.event.event_add', compact(
             'event_date',
             'events'
         ));
@@ -116,7 +92,7 @@ class EventController extends Controller
     {
         $event_lists = Event::all();
 
-        return view('teacher.event_create',compact(
+        return view('teacher.event.event_create',compact(
             'event_lists'
         ));
     }
@@ -144,7 +120,7 @@ class EventController extends Controller
 
         return redirect()
             ->route('teacher.event.create_get')
-            ->withStatus("更新しました");;
+            ->withStatus("更新しました");
     }
 
     public function create_delete($id)
@@ -155,7 +131,15 @@ class EventController extends Controller
 
         return redirect()
             ->route('teacher.event.create_get')
-            ->withStatus("削除しました");;
+            ->withStatus("削除しました");
     }
 
+    public function event_detail($id)
+    {
+        $event = Event::find($id);
+
+        return view('event_detail',compact(
+            'event'
+        ));
+    }
 }

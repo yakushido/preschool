@@ -53,4 +53,9 @@ class Teacher extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new ResetPassword($token));
     }
+
+    public function team()
+    {
+        return $this->belongsTo('App\Models\Team');
+    }
 }

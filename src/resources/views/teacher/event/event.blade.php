@@ -4,10 +4,10 @@
 <div>
     <div class="row">
         <div class="col-md-6">
-            <a href="{{ route('calendar', ['year' => $firstDayOfMonth->copy()->subMonth()->year, 'month' => $firstDayOfMonth->copy()->subMonth()->month]) }}">前月</a>
+            <a href="{{ route('teacher.event', ['year' => $firstDayOfMonth->copy()->subMonth()->year, 'month' => $firstDayOfMonth->copy()->subMonth()->month]) }}">前月</a>
         </div>
         <div class="col-md-6 text-right">
-            <a href="{{ route('calendar', ['year' => $firstDayOfMonth->copy()->addMonth()->year, 'month' => $firstDayOfMonth->copy()->addMonth()->month]) }}">次月</a>
+            <a href="{{ route('teacher.event', ['year' => $firstDayOfMonth->copy()->addMonth()->year, 'month' => $firstDayOfMonth->copy()->addMonth()->month]) }}">次月</a>
         </div>
     </div>
 

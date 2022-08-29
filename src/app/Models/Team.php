@@ -17,4 +17,14 @@ class Team extends Model
     {
         return $this->hasMany('App\Models\Photo');
     }
+
+    public function Teachers()
+    {
+        return $this->hasMany('App\Models\Teacher');
+    }
+
+    public function Users()
+    {
+        return $this->hasMany('App\Models\User');
+    }
 }

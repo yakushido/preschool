@@ -14,4 +14,9 @@ class Blog extends Model
         'content',
         'img_path'
     ];
+
+    public function Evaluations()
+    {
+        return $this->hasMany('App\Models\Evaluation');
+    }
 }
