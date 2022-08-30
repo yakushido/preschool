@@ -4,8 +4,10 @@ namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Team;
 use App\Models\Photo;
+use App\Models\History;
 
 class PhotoController extends Controller
 {
@@ -39,5 +41,16 @@ class PhotoController extends Controller
         $photo_delete->delete();
 
         return redirect()->route('teacher.photo');
+    }
+
+    public function photo_shop_index($id)
+    {
+        $gallery = Photo::find($id);
+        $history_count = History::where('user_id','=',Auth::id())->count();
+
+        return view('photo_shop',compact(
+            'gallery',
+            'history_count'
+        ));
     }
 }

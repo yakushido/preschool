@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserAttendance;
 use App\Models\Attendance;
+use App\Models\Photo;
 
 class DashboardController extends Controller
 {
@@ -46,13 +47,15 @@ class DashboardController extends Controller
 
         $user_attendances = UserAttendance::where('user_id','=',Auth::id())->get();
         $attendance_lists = Attendance::all();
+        $gallerys = Photo::all();
 
         return view('dashboard', compact(
             'weeks',
             'dates', 
             'firstDayOfMonth',
             'user_attendances',
-            "attendance_lists"
+            "attendance_lists",
+            "gallerys"
         ));
     }
 }

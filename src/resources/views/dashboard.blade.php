@@ -68,4 +68,11 @@
     </div>
 </div>
 
+<div>
+    <h3>ギャラリー</h3>
+    @foreach( $gallerys as $gallery )
+    <a href="/photo/{{ $gallery['id'] }}/shop/"><img src=" Storage::url($gallery['img_path'])  }}" alt="クラスimage"></a>
+    @endforeach
+</div>
+
 @endsection

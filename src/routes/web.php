@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\Teacher\TeacherDashboardController;
 use App\Http\Controllers\Teacher\BlogController;
@@ -40,6 +41,9 @@ Route::post('/attendance/update/{id}',[AttendanceController::class,'update'])->n
 Route::post('/blog/evaluation/add/{id}',[EvaluationController::class,'add'])->name('evaluation.add');
 Route::post('/blog/evaluation/update/{id}',[EvaluationController::class,'update'])->name('evaluation.update');
 
+Route::get('/photo/{id}/shop',[PhotoController::class,'photo_shop_index']);
+
+Route::post('/pay',[PaymentController::class,'pay']);
 
 require __DIR__.'/auth.php';
 

@@ -19,4 +19,9 @@ class Photo extends Model
         return $this->belongsTo('App\Models\Team');
     }
 
+    public function Historys()
+    {
+        return $this->hasMany('App\Models\History');
+    }
+
 }
