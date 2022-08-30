@@ -12,6 +12,7 @@ use App\Http\Controllers\Teacher\TeacherDashboardController;
 use App\Http\Controllers\Teacher\BlogController;
 use App\Http\Controllers\Teacher\PhotoController;
 use App\Http\Controllers\Teacher\EventController;
+use App\Http\Controllers\Teacher\MailController;
 
 
 /*
@@ -86,7 +87,10 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
     Route::post('/event/create_update/{id}',[EventController::class,'update'])->name('event.update');
     Route::post('/event/create_delete/{id}',[EventController::class,'create_delete'])->name('event.create_delete');
     Route::get('/event/{year?}/{month?}', [EventController::class,'get'])->name('event');
-    // Route::get('/event',[EventController::class,'get'])->name('event.get');
+    
+    Route::get('/mail',[MailController::class,'index']);
+    Route::post('/mail/confirm', [MailController::class,'confirm'])->name('mail.confirm');
+    Route::post('/mail/send', [MailController::class,'send']);
 
     });
     

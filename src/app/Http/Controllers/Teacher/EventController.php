@@ -75,7 +75,7 @@ class EventController extends Controller
         ]);
 
         return redirect()
-            ->route('teacher.event.get');
+            ->route('teacher.event');
     }
 
     public function delete($id)
@@ -85,7 +85,7 @@ class EventController extends Controller
         $event_delete->delete();
 
         return redirect()
-            ->route('teacher.event.get');
+            ->route('teacher.event');
     }
 
     public function create_get()
