@@ -9,10 +9,14 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\PaymentController;
 
 use App\Http\Controllers\Teacher\TeacherDashboardController;
+use App\Http\Controllers\Teacher\TeacherAttendanceController;
 use App\Http\Controllers\Teacher\BlogController;
 use App\Http\Controllers\Teacher\PhotoController;
 use App\Http\Controllers\Teacher\EventController;
 use App\Http\Controllers\Teacher\MailController;
+
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 
 
 /*
@@ -32,30 +36,41 @@ Route::get('/blog/detail/{id}',[BlogController::class,'detail'])->name('blog.det
 
 // user --------------------------------------------------------------------
 
-Route::get('/dashboard/{year?}/{month?}', [DashboardController::class,'get'])->name('dashboard');
+Route::middleware('auth:users', 'verified')->group(function () {
 
-Route::post('/attentance/add',[AttendanceController::class,'add'])->name('attendance.add');
-Route::post('/attendance/delete',[AttendanceController::class,'delete'])->name('attendance.delete');
-Route::get('/attendance/another_day',[AttendanceController::class,'another_day_get']);
-Route::post('/attendance/update/{id}',[AttendanceController::class,'update'])->name('attendance.update');
+    Route::get('/dashboard/{year?}/{month?}', [DashboardController::class,'get'])->name('dashboard');
 
-Route::post('/blog/evaluation/add/{id}',[EvaluationController::class,'add'])->name('evaluation.add');
-Route::post('/blog/evaluation/update/{id}',[EvaluationController::class,'update'])->name('evaluation.update');
+    Route::post('/attentance/add/{id}',[AttendanceController::class,'add'])->name('attendance.add');
+    Route::post('/attendance/delete/{id}/{date}',[AttendanceController::class,'delete'])->name('attendance.delete');
+    Route::get('/attendance/another_day',[AttendanceController::class,'another_day_get']);
+    Route::post('/attendance/update/{id}',[AttendanceController::class,'update'])->name('attendance.update');
 
-Route::get('/photo/{id}/shop',[PhotoController::class,'photo_shop_index']);
+    Route::post('/blog/evaluation/add/{id}',[EvaluationController::class,'add'])->name('evaluation.add');
+    Route::post('/blog/evaluation/update/{id}',[EvaluationController::class,'update'])->name('evaluation.update');
 
-Route::post('/pay',[PaymentController::class,'pay']);
+    Route::get('/photo/{id}/shop',[PhotoController::class,'photo_shop_index']);
+
+    Route::post('/pay',[PaymentController::class,'pay']);
+
+});
 
 require __DIR__.'/auth.php';
 
 //  admin -------------------------------------------------------------------
 
-Route::prefix('admin')->name('admin.')->middleware('auth:admins')->group(function(){
+Route::prefix('admin')->name('admin.')->group(function(){
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->middleware(['auth:admins'])->name('dashboard');
-    
+    Route::middleware('auth:admins', 'verified')->group(function () {
+
+    Route::get('/dashboard',[AdminDashboardController::class,'index'])->name('dashboard');
+
+    Route::get('register', [RegisteredUserController::class, 'create'])
+                ->name('register');
+
+    Route::post('register', [RegisteredUserController::class, 'store']);
+
+    });
+
     require __DIR__.'/admin.php';
 });
 
@@ -63,11 +78,15 @@ Route::prefix('admin')->name('admin.')->middleware('auth:admins')->group(functio
 
 Route::prefix('teacher')->name('teacher.')->group(function(){
 
-    Route::middleware('auth:teachers')->group(function () {
+    Route::middleware('auth:teachers', 'verified')->group(function () {
 
     Route::get('/dashboard',[TeacherDashboardController::class,'index'])->name('dashboard');
 
     Route::get('/user_detail/{id}/{year?}/{month?}',[TeacherDashboardController::class,'user_detail'])->name('user_detail');
+
+    Route::post('/attentance/add/{id}',[TeacherAttendanceController::class,'add'])->name('attendance.add');
+    Route::post('/attendance/delete/{id}',[TeacherAttendanceController::class,'delete'])->name('attendance.delete');
+    Route::post('/attendance/update/{id}',[TeacherAttendanceController::class,'update'])->name('attendance.update');
 
     Route::get('/blog',[BlogController::class,'index'])->name('blog');
     Route::post('/blog/add',[BlogController::class,'add'])->name('blog.add');
@@ -96,3 +115,4 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
     
     require __DIR__.'/teacher.php';
 });
+

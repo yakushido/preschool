@@ -23,6 +23,7 @@ class Teacher extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'team_id'
     ];
 
     /**

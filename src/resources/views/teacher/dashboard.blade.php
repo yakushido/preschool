@@ -17,7 +17,6 @@
             <tr>
                 <th>名前</th>
                 <th>今日の出欠</th>
-                <th>別日の出欠</th>
             </tr>
             @foreach($team_users as $team_user)
             <tr>
@@ -25,9 +24,9 @@
                     <a href="{{ route('teacher.user_detail',[ 'id' => $team_user['id'] ]) }}">{{ $team_user['name'] }}</a>
                 </td>
                 <td>
-                    <form action="{{ route('attendance.add') }}" method="POST">
+                    @if( $team_user['UserAttendances']->where('date','=',\Carbon\Carbon::now()->format("Y-m-d"))->where('user_id','=',$team_user['id'])->first() === null )
+                    <form action="{{ route('teacher.attendance.add',$team_user['id']) }}" method="POST">
                         @csrf
-                        <input type="text" name="user_id" value="{{ $team_user['id'] }}" hidden>
                         <input type="text" name="date" value="{{ \Carbon\Carbon::now()->format("Y-m-d") }}" hidden>
                         <select name="attendance_id">
                             @foreach( $attendance_lists as $attendance_list )
@@ -36,22 +35,12 @@
                         </select>
                         <button>追加</button>
                     </form>
-                </td>
-                <td>
-                    <form action="{{ route('attendance.add') }}" method="POST">
-                        @csrf
-                        <input type="date" name="date">
-                        <input type="text" name="user_id" value="{{ $team_user['id'] }}" hidden>
-                        <select name="attendance_id">
-                            @foreach( $attendance_lists as $attendance_list )
-                            <option value="{{ $attendance_list['id'] }}">{{ $attendance_list['name'] }}</option>
-                            @endforeach
-                        </select>
-                        <button>追加</button>
-                    </form>
+                    @else
+                    <p>入力済み</p>
+                    @endif
                 </td>
             </tr>
-                @endforeach
+            @endforeach
         </table>
     </div>
 </div>
@@ -61,6 +50,7 @@
     <a href="/teacher/blog">ブログの追加はこちら</a>
     <a href="/teacher/photo">写真の追加はこちら</a>
     <a href="{{ route('teacher.event') }}">イベントの追加はこちら</a>
+    <a href="/register">園児の追加はこちら</a>
 </div>
 
 

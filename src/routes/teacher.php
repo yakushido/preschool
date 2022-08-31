@@ -10,11 +10,15 @@ use App\Http\Controllers\Teacher\Auth\RegisteredUserController;
 use App\Http\Controllers\Teacher\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('guest:teachers')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
+Route::get('register', [RegisteredUserController::class, 'create'])
+            ->middleware('auth:admins')
+            ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+Route::post('register', [RegisteredUserController::class, 'store'])
+            ->middleware('auth:admins');
+
+            
+Route::middleware('guest:teachers')->group(function () {
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');

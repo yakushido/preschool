@@ -1,26 +1,44 @@
+@extends('admin.layouts.default')
+@section('contents')
+
 <div>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div>
+        <p>パスワードをお忘れになりましたか？</br>メールアドレスをお知らせいただければ、パスワード再設定用のリンクをメールでお送りしますので、新しいパスワードをお選びください。</p>
+    </div>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    @if (session('status'))
+        <div role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
 
-        <form method="POST" action="{{ route('admin.password.email') }}">
-            @csrf
+    <!-- Validation Errors -->
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-            <!-- Email Address -->
-            <div>
-                <label for="email" :value="__('Email')" />
+    <form method="POST" action="{{ route('admin.password.email') }}">
+        @csrf
 
-                <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+        <!-- Email Address -->
+        <div>
+            <label for="email">メールアドレス：
 
-            <div class="flex items-center justify-end mt-4">
-                <button>
-                    {{ __('Email Password Reset Link') }}
-                </button>
-            </div>
-        </form>
+            <input id="email" type="email" name="email" :value="old('email')" autofocus />
+        </div>
+
+        <div>
+            <button>パスワード再設定用のリンク</button>
+        </div>
+    </form>
 
 </div>
+
+@endsection

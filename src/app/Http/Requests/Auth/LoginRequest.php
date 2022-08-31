@@ -34,6 +34,22 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'required' => ':attributeを入力してください。',
+            'email' => ':attributeが正しい形式ではありません。',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'email'    => 'メールアドレス',
+            'password'    => 'パスワード',
+        ];
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *

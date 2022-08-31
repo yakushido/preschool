@@ -19,19 +19,19 @@
             </div>
         @endif
         @if( $today_attendance === null )
-        <form action="{{ route('attendance.add') }}" method="POST">
+        <form action="{{ route('attendance.add',Auth::id()) }}" method="POST">
             @csrf
             <input type="text" name="attendance_id" value="2" hidden>
             <input type="text" name="date" value="{{ \Carbon\Carbon::now()->format("Y-m-d") }}" hidden>
             <button>欠席</button>
         </form>
-        <form action="{{ route('attendance.add') }}" method="POST">
+        <form action="{{ route('attendance.add',Auth::id()) }}" method="POST">
             @csrf
             <input type="text" name="attendance_id" value="3" hidden>
             <input type="text" name="date" value="{{ \Carbon\Carbon::now()->format("Y-m-d") }}" hidden>
             <button>遅刻</button>
         </form>
-        <form action="{{ route('attendance.add') }}" method="POST">
+        <form action="{{ route('attendance.add',Auth::id()) }}" method="POST">
             @csrf
             <input type="text" name="attendance_id" value="4" hidden>
             <input type="text" name="date" value="{{ \Carbon\Carbon::now()->format("Y-m-d") }}" hidden>
@@ -39,9 +39,8 @@
         </form>
         @else
         <p>今日はすでに連絡済みです</p>
-        <form action="{{ route('attendance.delete') }}" method="POST">
+        <form action="{{ route('attendance.delete',[ 'id' => Auth::id(), 'date' => \Carbon\Carbon::now()->format("Y-m-d") ]) }}" method="POST">
             @csrf
-            <input type="text" name="date" value="{{ \Carbon\Carbon::now()->format("Y-m-d") }}" hidden>
             <button>取り消しはこちら</button>
         </form>
         @endif
@@ -77,6 +76,7 @@
                 <p>-> <a href="/event/detail/{{ $event_list['event_id'] }}">{{ $event_list['event']['name'] }}</a></p>
             @endforeach
         </div>
+        {{ $event_lists->links('pagination::bootstrap-4') }}
     </div>
 </div>
 

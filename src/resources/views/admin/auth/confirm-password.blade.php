@@ -1,3 +1,6 @@
+@extends('admin.layouts.default')
+@section('contents')
+
 <div>
 
     <!-- Validation Errors -->
@@ -8,19 +11,19 @@
 
         <!-- Password -->
         <div>
-            <label for="password" :value="__('Password')" />
+            <label for="password">パスワード：
 
-            <input id="password" class="block mt-1 w-full"
+            <input id="password"
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
         </div>
 
-        <div class="flex justify-end mt-4">
-            <button>
-                {{ __('Confirm') }}
-            </button>
+        <div>
+            <button>確認</button>
         </div>
     </form>
 
 </div>
+
+@endsection

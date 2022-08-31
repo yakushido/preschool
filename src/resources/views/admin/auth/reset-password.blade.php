@@ -1,7 +1,18 @@
+@extends('admin.layouts.default')
+@section('contents')
+
 <div>
 
     <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form method="POST" action="{{ route('admin.password.update') }}">
         @csrf
@@ -11,32 +22,32 @@
 
         <!-- Email Address -->
         <div>
-            <label for="email" :value="__('Email')" />
+            <label for="email">メールアドレス：
 
-            <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+            <input id="email" type="email" name="email" :value="old('email', $request->email)" autofocus />
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <label for="password" :value="__('Password')" />
+        <div>
+            <label for="password">新しいパスワード：
 
-            <input id="password" class="block mt-1 w-full" type="password" name="password" required />
+            <input id="password" type="password" name="password">
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
-            <label for="password_confirmation" :value="__('Confirm Password')" />
+        <div>
+            <label for="password_confirmation">新しいパスワード（確認用）：
 
-            <input id="password_confirmation" class="block mt-1 w-full"
+            <input id="password_confirmation"
                                 type="password"
-                                name="password_confirmation" required />
+                                name="password_confirmation">
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <button>
-                {{ __('Reset Password') }}
-            </button>
+        <div>
+            <button>パスワードリセット</button>
         </div>
     </form>
 
 </div>
+
+@endsection

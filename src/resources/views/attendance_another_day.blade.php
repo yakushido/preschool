@@ -3,7 +3,12 @@
 
 <div>
     <h3>別日の欠席連絡</h3>
-    <form action="{{ route('attendance.add') }}" method="POST">
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+    <form action="{{ route('attendance.add',Auth::id()) }}" method="POST">
         @csrf
         <div>
             <label for="date">日にち：</label>

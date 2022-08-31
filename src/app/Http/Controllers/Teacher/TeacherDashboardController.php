@@ -19,11 +19,13 @@ class TeacherDashboardController extends Controller
         $teacher = Teacher::find(Auth::id());
         $team_users = User::where('team_id','=',$teacher['team_id'])->get();
         $attendance_lists = Attendance::all();
+        $today_attendances = UserAttendance::where('date','=',Carbon::now()->format('Y-m-d'))->get();
 
         return view('teacher.dashboard',compact(
             'teacher',
             'team_users',
-            'attendance_lists'
+            'attendance_lists',
+            'today_attendances'
         ));
     }
 

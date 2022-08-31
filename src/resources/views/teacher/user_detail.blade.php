@@ -7,7 +7,7 @@
 </div>
 
 <div>
-    <h3>出欠カレンダー</h3>
+    <h4>出欠カレンダー</h4>
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -49,7 +49,7 @@
                                 @foreach( $user_attendances as $user_attendance )
                                     @if( App\Models\UserAttendance::where('date',$date)->exists() )
                                         @if( $user_attendance['date'] == $date->format('Y-m-d') )
-                                            <form action="{{ route('attendance.update',$user_attendance['id']) }}" method="POST">
+                                            <form action="{{ route('teacher.attendance.update',$user_attendance['id']) }}" method="POST">
                                                 @csrf
                                                 <select name="attendance_id">
                                                     <option value="">{{ $user_attendance['attendance']['name'] }}</option>
@@ -60,6 +60,10 @@
                                                 <div>
                                                     <button>更新</button>
                                                 </div>
+                                            </form>
+                                            <form action="{{ route('teacher.attendance.delete',$user_attendance['id']) }}" method="POST">
+                                                @csrf
+                                                <button>削除</button>
                                             </form>
                                         @endif
                                     @endif
@@ -72,6 +76,20 @@
             @endforeach
             </tbody>
         </table>
+    </div>
+
+    <div>
+        <h4>別日の出欠</h4>
+        <form action="{{ route('teacher.attendance.add',$user_detail['id']) }}" method="POST">
+            @csrf
+            <input type="date" name="date">
+            <select name="attendance_id">
+                @foreach( $attendance_lists as $attendance_list )
+                <option value="{{ $attendance_list['id'] }}">{{ $attendance_list['name'] }}</option>
+                @endforeach
+            </select>
+            <button>追加</button>
+        </form>
     </div>
 </div>
 

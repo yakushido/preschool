@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             // test
             EventDatesTableSeeder::class,
             TeachersTableSeeder::class,
-            UsersTableSeeder::class
+            UsersTableSeeder::class,
+            AdminsTableSeeder::class
         ]);
     }
 }

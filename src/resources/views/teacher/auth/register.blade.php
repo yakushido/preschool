@@ -6,52 +6,65 @@
     <h2>教員用新規登録フォーム</h2>
 
     <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form method="POST" action="{{ route('teacher.register') }}">
         @csrf
 
         <!-- Name -->
         <div>
-            <x-label for="name" :value="__('Name')" />
+            <label for="name">氏名：
 
-            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            <input id="name" type="text" name="name" :value="old('name')" autofocus />
+        </div>
+
+        <!-- Class -->
+        <div>
+            <label for="team_id">クラス：
+
+            <select name="team_id">
+                @foreach( $team_lists as $team_list )
+                <option value="{{ $team_list['id'] }}">{{ $team_list['name'] }}</option>
+                @endforeach
+            </select>
         </div>
 
         <!-- Email Address -->
-        <div class="mt-4">
-            <x-label for="email" :value="__('Email')" />
+        <div>
+            <label for="email">メールアドレス：
 
-            <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <input id="email" type="email" name="email" :value="old('email')">
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-label for="password" :value="__('Password')" />
+        <div>
+            <label for="password">パスワード：
 
-            <x-input id="password" class="block mt-1 w-full"
+            <input id="password"
                             type="password"
                             name="password"
-                            required autocomplete="new-password" />
+                            autocomplete="new-password">
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-label for="password_confirmation" :value="__('Confirm Password')" />
+        <div>
+            <label for="password_confirmation"/>パスワード（確認用）：
 
-            <x-input id="password_confirmation" class="block mt-1 w-full"
+            <input id="password_confirmation"
                             type="password"
-                            name="password_confirmation" required />
+                            name="password_confirmation">
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('teacher.login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-button class="ml-4">
-                {{ __('Register') }}
-            </x-button>
+        <div>
+            <button>登録</button>
         </div>
     </form>
 

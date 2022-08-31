@@ -3,47 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\UserAttendance;
 use App\Models\Attendance;
 
 class AttendanceController extends Controller
 {
-    public function add(Request $request)
+    public function add(Request $request, $id)
     {
-        if( Auth::guard("users")->check() ){
-            UserAttendance::create([
-                'attendance_id' => $request->attendance_id,
-                'date' => $request->date,
-                'user_id' => Auth::id()
-            ]);
-
-            return redirect()
-            ->route('index')
-            ->withStatus("送信しました");
-        }elseif( Auth::guard("teachers")->check() ){
-            UserAttendance::create([
-                'attendance_id' => $request->attendance_id,
-                'date' => $request->date,
-                'user_id' => $request->user_id
-            ]);
-
-            return redirect()
-            ->route('teacher.dashboard')
-            ->withStatus("追加しました");
-        }
-        
-        
-    }
-
-    public function delete(Request $request)
-    {
-        $user_attensance_delete = UserAttendance::where('date','=',$request->date)
-            ->where('user_id','=',Auth::id())
-            ->delete();
+        UserAttendance::create([
+            'attendance_id' => $request->attendance_id,
+            'date' => $request->date,
+            'user_id' => $id
+        ]);
 
         return redirect()
-            ->route('index')
+            ->back()
+            ->withStatus("送信しました");
+
+    }
+
+    public function delete($id, $date)
+    {
+        UserAttendance::where('user_id','=',$id)->where('date','=',$date)->delete();
+
+        return redirect()
+            ->back()
             ->withStatus("削除しました");
     }
 
@@ -65,15 +49,9 @@ class AttendanceController extends Controller
 
         $attendance_lists = Attendance::all();
 
-        if( Auth::guard("users")->check() ){
-            return redirect()
-                ->route('dashboard')
-                ->withStatus("更新しました");
-        }elseif( Auth::guard("teachers")->check() ){
-            return redirect()
-                ->route('teacher.user_detail',['id' => $user_attendance_update['user_id']])
-                ->withStatus("更新しました");
-        }
+        return redirect()
+            ->route('dashboard')
+            ->withStatus("更新しました");
     }
 
 }
