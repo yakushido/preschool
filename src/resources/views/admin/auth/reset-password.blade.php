@@ -1,52 +1,61 @@
 @extends('admin.layouts.default')
 @section('contents')
 
-<div>
+<link rel="stylesheet" href="{{ asset('css/reset_password.css') }}">
 
-    <!-- Validation Errors -->
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+<div class="reset_password">
 
-    <form method="POST" action="{{ route('admin.password.update') }}">
-        @csrf
+    <h3 class="form_title">パスワードリセットフォーム</h3>
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+    <div class="reset_password_form">
 
-        <!-- Email Address -->
-        <div>
-            <label for="email">メールアドレス：
+        <!-- Validation Errors -->
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="error_li">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-            <input id="email" type="email" name="email" :value="old('email', $request->email)" autofocus />
-        </div>
+        <form method="POST" action="{{ route('admin.password.update') }}">
+            @csrf
 
-        <!-- Password -->
-        <div>
-            <label for="password">新しいパスワード：
+            <!-- Password Reset Token -->
+            <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <input id="password" type="password" name="password">
-        </div>
+            <!-- Email Address -->
+            <div class="mail">
+                <div><label for="email" class="mail_icon"></div>
 
-        <!-- Confirm Password -->
-        <div>
-            <label for="password_confirmation">新しいパスワード（確認用）：
+                <input id="email" type="email" name="email" :value="old('email', $request->email)" placeholder="メールアドレス" autofocus />
+            </div>
 
-            <input id="password_confirmation"
-                                type="password"
-                                name="password_confirmation">
-        </div>
+            <!-- Password -->
+            <div class="password">
+                <div><label for="password" class="password_icon"></div>
 
-        <div>
-            <button>パスワードリセット</button>
-        </div>
-    </form>
+                <input id="password" type="password" name="password" placeholder="新しいパスワード">
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="password_confirmation">
+                <div><label for="password_confirmation" class="password_confirmation_icon"></div>
+
+                <input id="password_confirmation"
+                                    type="password"
+                                    placeholder="新しいパスワード（確認用）"
+                                    name="password_confirmation">
+            </div>
+
+            <div class="button">
+                <button>パスワードリセット</button>
+            </div>
+        </form>
+
+    </div>
 
 </div>
 

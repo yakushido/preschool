@@ -1,72 +1,82 @@
 @extends('teacher.layouts.default')
 @section('contents')
 
-<div>
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
 
-    <h2>教員用新規登録フォーム</h2>
 
-    <!-- Validation Errors -->
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+<div class="register">
 
-    <form method="POST" action="{{ route('teacher.register') }}">
-        @csrf
+    <h3 class="form_title">教員の新規登録フォーム</h3>
 
-        <!-- Name -->
-        <div>
-            <label for="name">氏名：
+    <div class="register_form">
 
-            <input id="name" type="text" name="name" :value="old('name')" autofocus />
-        </div>
+        <!-- Validation Errors -->
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="error_li">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <!-- Class -->
-        <div>
-            <label for="team_id">クラス：
+        <form method="POST" action="{{ route('teacher.register') }}">
+            @csrf
 
-            <select name="team_id">
-                @foreach( $team_lists as $team_list )
-                <option value="{{ $team_list['id'] }}">{{ $team_list['name'] }}</option>
-                @endforeach
-            </select>
-        </div>
+            <!-- Name -->
+            <div class="name">
+                <div><label for="name" class="name_icon"></div>
 
-        <!-- Email Address -->
-        <div>
-            <label for="email">メールアドレス：
+                <input id="name" type="text" name="name" :value="old('name')" placeholder="氏名" autofocus />
+            </div>
 
-            <input id="email" type="email" name="email" :value="old('email')">
-        </div>
+            <!-- Email Address -->
+            <div class="mail">
+                <div><label for="email" class="mail_icon"></div>
 
-        <!-- Password -->
-        <div>
-            <label for="password">パスワード：
+                <input id="email" type="email" name="email" :value="old('email')"  placeholder="メールアドレス">
+            </div>
 
-            <input id="password"
-                            type="password"
-                            name="password"
-                            autocomplete="new-password">
-        </div>
+            <!-- class -->
+            <div class="team">
+                <div><label for="team_id" class="team_icon"><i></i></div>
 
-        <!-- Confirm Password -->
-        <div>
-            <label for="password_confirmation"/>パスワード（確認用）：
+                <select name="team_id">
+                    <option value="" disabled selected>クラス</option>
+                    @foreach( $team_lists as $team_list )
+                    <option value="{{  $team_list['id'] }}">{{ $team_list['name'] }}</option>
+                    @endforeach
+                </select>
+            </div>
 
-            <input id="password_confirmation"
-                            type="password"
-                            name="password_confirmation">
-        </div>
+            <!-- Password -->
+            <div class="password">
+                <div><label for="password" class="password_icon"></div>
 
-        <div>
-            <button>登録</button>
-        </div>
-    </form>
+                <input id="password"
+                                type="password"
+                                name="password"
+                                placeholder="パスワード"
+                                autocomplete="new-password" />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="password_confirmation">
+                <div><label for="password_confirmation" class="password_confirmation_icon"></div>
+
+                <input id="password_confirmation"
+                                type="password"
+                                placeholder="パスワード（確認用）"
+                                name="password_confirmation">
+            </div>
+
+            <div class="button">
+                <button>Register</button>
+            </div>
+        </form>
+
+    </div>
 
 </div>
 

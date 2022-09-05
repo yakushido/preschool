@@ -4,9 +4,11 @@ namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Blog;
 use App\Models\Evaluation;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BlogRequest;
 
 class BlogController extends Controller
 {
@@ -17,7 +19,7 @@ class BlogController extends Controller
         return view('teacher.blog',compact('blog_lists'));
     }
 
-    public function add(Request $request)
+    public function add(BlogRequest $request)
     {
         $img = $request->file('img_path');
 
@@ -37,6 +39,7 @@ class BlogController extends Controller
         $blog_delete = Blog::find($id);
 
         $blog_delete->delete();
+        Storage::disk('public')->delete($blog_delete->img_path);
 
         return redirect()->route('teacher.blog');
     }

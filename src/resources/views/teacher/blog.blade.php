@@ -2,6 +2,20 @@
 @section('contents')
 
 <div class="blog_add"> 
+
+    <h3>ブログの投稿</h3>
+
+    <!-- Validation Errors -->
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('teacher.blog.add') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
@@ -23,6 +37,9 @@
 </div>
 
 <div class="blog_lists">
+
+    <h3>過去のブログリスト</h3>
+
     @foreach( $blog_lists as $blog_list )
     <div>
         <h3><a href="{{ route('teacher.blog.detail',$blog_list['id'])  }}">{{ $blog_list['title'] }}</a></h3>
@@ -36,6 +53,7 @@
         </form>
     </div>
     @endforeach
+    {{ $blog_lists->links('pagination::bootstrap-4') }}
 </div>
 
 @endsection

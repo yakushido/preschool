@@ -1,15 +1,12 @@
 @extends('layouts.default')
 @section('contents')
 
-<div>
-    <div>
-        <h3>イベント名</h3>
-        <h4>{{ $event['name'] }}</h4>
-    </div>
-    <div>
-        <h3>イベント内容</h3>
-        <p>{{ $event['content'] }}</p>
-    </div>
+<link rel="stylesheet" href="{{ asset('css/event.css') }}">
+
+
+<div class="event">
+    <h3>{{ $event['name'] }}</h3>
+    <p>{{ $event['content'] }}</p>
 </div>
 
 @endsection

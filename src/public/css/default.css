@@ -1,0 +1,63 @@
+
+input:hover,
+button:hover,
+select:hover,
+a:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.default_header{
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #D07000;
+}
+
+.header_title{
+    font-size: 30px;
+    line-height: 50px;
+    text-decoration: none;
+    color: black;
+    margin-left: 5px;
+}
+
+.header_login{
+    display: flex;
+}
+.header_login a{
+    margin-left:10px;
+    text-decoration: none;
+    color: black;
+}
+.header_login button{
+    margin:0 10px 0 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid #D07000;
+    color: #D07000;
+    background-color: white;
+}
+
+.default_footer{
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #42032C;
+}
+.default_footer ul{
+    display: flex;
+    justify-content: end;
+    line-height: 50px;
+}
+.default_footer li{
+    list-style: none;
+}
+.default_footer a{
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}

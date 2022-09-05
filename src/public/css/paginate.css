@@ -1,0 +1,11 @@
+.pagination {
+  display: inline-flex;
+  padding: 5px 10px;
+  justify-content: center;
+}
+.pagination a{
+  text-decoration: none;
+}
+.paginate{
+  text-align: center;
+}

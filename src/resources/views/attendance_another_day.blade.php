@@ -3,11 +3,24 @@
 
 <div>
     <h3>別日の欠席連絡</h3>
+
+    <!-- Validation Errors -->
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
         </div>
     @endif
+
     <form action="{{ route('attendance.add',Auth::id()) }}" method="POST">
         @csrf
         <div>
@@ -26,6 +39,7 @@
             <button>送信</button>
         </div>
     </form>
+    
 </div>
 
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
+use App\Models\Team;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,11 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('teacher.auth.register');
+        $team_lists = Team::all();
+
+        return view('teacher.auth.register',compact(
+            'team_lists'
+        ));
     }
 
     /**

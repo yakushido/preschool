@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserAttendance;
 use App\Models\Attendance;
+use App\Http\Requests\AttendanceRequest;
 
 class TeacherAttendanceController extends Controller
 {
-    public function add(Request $request, $id)
+    public function add(AttendanceRequest $request, $id)
     {
         UserAttendance::create([
             'attendance_id' => $request->attendance_id,

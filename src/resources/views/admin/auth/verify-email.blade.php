@@ -1,34 +1,32 @@
 @extends('admin.layouts.default')
 @section('contents')
 
-<div>
+<link rel="stylesheet" href="{{ asset('css/verify_email.css') }}">
 
-    <div>
-        <p>サインアップありがとうございます。</br>メールをお送りしていますので、記載されているリンクをクリックして、メールアドレスの確認をしてください。</br>もしメールが届いていない場合は、再度お送りします。</p>
-    </div>
+<div class="verify_email">
 
-    @if (session('status') == 'verification-link-sent')
-        <div>
-            {{ __('頂いたメールアドレスに、新しい認証リンクが送信されました') }}
+    <h3 class="form_title">メール認証フォーム</h3>
+
+    <div class="verify_email_form">
+
+        <div class="form_sentence">
+            <p>サインアップありがとうございます。</br>メールをお送りしていますので、記載されているリンクをクリックして、メールアドレスの確認をしてください。</br>もしメールが届いていない場合は、再度お送りします。</p>
         </div>
-    @endif
 
-    <div>
+        @if (session('status') == 'verification-link-sent')
+            <div class="alert">
+                <p>頂いたメールアドレスに、新しい認証リンクが送信されました。</p>
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('admin.verification.send') }}">
             @csrf
 
-            <div>
+            <div class="button">
                 <button>認証メール再送信</button>
             </div>
         </form>
 
-        <form method="POST" action="{{ route('admin.logout') }}">
-            @csrf
-
-            <button type="submit">
-                {{ __('Log Out') }}
-            </button>
-        </form>
     </div>
 
 </div>

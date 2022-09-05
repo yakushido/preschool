@@ -1,65 +1,69 @@
 @extends('admin.layouts.default')
 @section('contents')
 
-<div>
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
 
-    <h2>管理者用新規登録フォーム</h2>
+<div class="register">
 
-    <!-- Validation Errors -->
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <h3 class="form_title">管理者用新規登録フォーム</h3>
 
-    <form method="POST" action="{{ route('admin.register') }}">
-        @csrf
+    <div class="register_form">
 
-        <!-- Name -->
-        <div>
-            <label for="name">氏名：
+        <!-- Validation Errors -->
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="error_li">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-            <input id="name" type="text" name="name" :value="old('name')" autofocus>
-        </div>
+        <form method="POST" action="{{ route('admin.register') }}">
+            @csrf
 
-        <!-- Email Address -->
-        <div>
-            <label for="email">メールアドレス：
+            <!-- Name -->
+            <div class="name">
+                <div><label for="name" class="name_icon"></div>
 
-            <input id="email" type="email" name="email" :value="old('email')">
-        </div>
+                <input id="name" type="text" name="name" :value="old('name')" placeholder="氏名" autofocus />
+            </div>
 
-        <!-- Password -->
-        <div>
-            <label for="password">パスワード：
+            <!-- Email Address -->
+            <div class="mail">
+                <div><label for="email" class="mail_icon"></div>
 
-            <input id="password"
-                            type="password"
-                            name="password"
-                            autocomplete="new-password" />
-        </div>
+                <input id="email" type="email" name="email" :value="old('email')"  placeholder="メールアドレス">
+            </div>
 
-        <!-- Confirm Password -->
-        <div>
-            <label for="password_confirmation">パスワード（確認用）：
+            <!-- Password -->
+            <div class="password">
+                <div><label for="password" class="password_icon"></div>
 
-            <input id="password_confirmation"
-                            type="password"
-                            name="password_confirmation">
-        </div>
+                <input id="password"
+                                type="password"
+                                name="password"
+                                placeholder="パスワード"
+                                autocomplete="new-password" />
+            </div>
 
-        <div>
-            <a href="{{ route('admin.login') }}">
-                {{ __('Already registered?') }}
-            </a>
+            <!-- Confirm Password -->
+            <div class="password_confirmation">
+                <div><label for="password_confirmation" class="password_confirmation_icon"></div>
 
-            <button>Register</button>
-        </div>
-    </form>
+                <input id="password_confirmation"
+                                type="password"
+                                placeholder="パスワード（確認用）"
+                                name="password_confirmation">
+            </div>
+
+            <div class="button">
+                <button>Register</button>
+            </div>
+        </form>
+
+    </div>
 
 </div>
 

@@ -1,51 +1,60 @@
 @extends('admin.layouts.default')
 @section('contents')
 
-<div>
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
-    <h2>管理者用ログインフォーム</h2>
+<div class="login">
 
-    <!-- Validation Errors -->
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <h3 class="form_title">管理者用ログインフォーム</h3>
 
-    <form method="POST" action="{{ route('admin.login') }}">
-        @csrf
+    <div class="login_form">
 
-        <!-- Email Address -->
-        <div>
-            <label for="email">メールアドレス：
+        <!-- Validation Errors -->
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="error_li">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-            <input id="email" type="email" name="email" :value="old('email')" autofocus />
-        </div>
+        <form method="POST" action="{{ route('admin.login') }}">
+            @csrf
 
-        <!-- Password -->
-        <div>
-            <label for="password">パスワード：
+            <!-- Email Address -->
+            <div class="mail">
+                <div><label for="email" class="mail_icon"></div>
 
-            <input id="password"
-                            type="password"
-                            name="password"
-                            autocomplete="current-password" />
-        </div>
+                <input id="email" type="email" name="email" :value="old('email')" placeholder="メールアドレス" autofocus />
+            </div>
 
-        <div>
-            @if (Route::has('admin.password.request'))
-                <a href="{{ route('admin.password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+            <!-- Password -->
+            <div class="password">
+                <div><label for="password" class="password_icon"></div>
 
-            <button>Log in</button>
-        </div>
-    </form>
+                <input id="password"
+                                type="password"
+                                name="password"
+                                placeholder="パスワード"
+                                autocomplete="current-password" />
+            </div>
+
+            <div class="button">
+                @if (Route::has('admin.password.request'))
+                    <a href="{{ route('admin.password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+
+                <div>
+                    <button>Log in</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 
 </div>
 

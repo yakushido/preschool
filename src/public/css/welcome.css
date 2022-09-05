@@ -1,0 +1,143 @@
+.welcome h3,
+.welcome a{
+    text-align: center;
+}
+.welcome li{
+    list-style: none;
+}
+.welcome a{
+    text-decoration: none;
+    color: black;
+}
+
+.attendance_flex{
+    display: flex;
+    justify-content: center;
+}
+.alert{
+    color: rgb(255, 0, 0);
+    margin: 10px 0 5px 0;
+    text-align: center;
+}
+.attendance{
+    border: 1px solid black;
+    width: 400px;
+    margin: 30px auto;
+    padding: 10px;
+    text-align: center;
+}
+.attendance_form,
+.attendance>div>p{
+    margin: 10px 0; 
+}
+.attendance_form>button{
+    width: 120px;
+    height: 50px;
+    margin: 0 5px;
+}
+.attendance_button_absence{
+    background-color: #A10035;
+}
+.attendance_button_lateness{
+    background-color: #FEC260;
+}
+.attendance_button_early{
+    background-color: #3FA796;
+}
+.attendance_button_delete{
+    background-color: #3B9AE1;
+}
+
+/* blog */
+.blog{
+    text-align: center;
+}
+.blog h3{
+    margin-bottom: 10px;
+}
+.blog_cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.blog_card_item{
+    width: 45%;
+    margin: 10px;
+
+}
+.blog_card_item>h4{
+    height: 30px;
+    line-height: 30px;
+    background-color: #D07000;
+    border-radius:5px 5px 0 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+.blog_card_item img{
+    width: 100%;
+    border-radius:0 0 5px 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* event */
+.event{
+    width: 600px;
+    margin: 0 auto; 
+    position: relative;
+}
+.event>img{
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    box-shadow: none;
+    padding-bottom: 50px;
+}
+.event>div{
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translate(-50%);
+    width: 80%;
+}
+.event h3{
+    margin: 30px 0 10px 0;
+}
+.event ul{
+    text-align: center;
+    
+}
+.event_li_date{
+    padding: 5px;
+}
+.event_li_content{
+    padding: 5px;
+    border-bottom: 1px solid black;
+}
+.event_li_date:first-of-type{
+    border-top: 1px solid black;
+}
+.event_li_content>a{
+    margin-left: 30px;
+}
+.arrow_right_icon {
+    color: #42032C;
+    position: absolute;
+    margin-left: 2px;
+    margin-top: 7px;
+    width: 16px;
+    height: 3px;
+    background-color: currentColor;
+}
+.arrow_right_icon:before {
+    content: '';
+    position: absolute;
+    right: 1px;
+    top: -5px;
+    width: 10px;
+    height: 10px;
+    border-top: solid 3px currentColor;
+    border-right: solid 3px currentColor;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
