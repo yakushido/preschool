@@ -3,19 +3,18 @@
 
 <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
 
-<div class="blog">
-    @if (session('status'))
-        <div class="alert" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
-    <div class="blog_detail">
+<div class="blog_detail">
+
+    <h3>ブログ詳細フォーム</h3>
+
+    <div>
         <h4>{{ $blog_detail['title'] }}</h4>
         <img src="{{ Storage::url($blog_detail['img_path']) }}" alt="ブログimage">
         <p>{{ $blog_detail['content'] }}</p>
     </div>
     
-    <div class="evaluation">
+    <div class="blog_evaluation">
+
         @if( $evaluation === null )
             @if( Auth::check() )
             <form action="{{ route('evaluation.add',$blog_detail['id']) }}" method="POST" class="evaluation_form">
@@ -27,7 +26,8 @@
                     <option value="4">☆☆☆☆</option>
                     <option value="5">☆☆☆☆☆</option>
                 </select>
-                <button>評価する</button>
+                <button class="button">評価する</button>
+
             </form>
             @elseif( !Auth::check() )
             <div class="evaluation_login">
@@ -45,7 +45,7 @@
                     <option value="4">☆☆☆☆</option>
                     <option value="5">☆☆☆☆☆</option>
                 </select>
-                <button>変更する</button>
+                <button class="button">変更する</button>
             </form>
             @elseif( !Auth::check() )
             <div class="evaluation_login">

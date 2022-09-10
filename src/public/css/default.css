@@ -1,8 +1,10 @@
 
-input:hover,
+input[type="text"]:hover,
+input[type="date"]:hover,
 button:hover,
 select:hover,
-a:hover{
+a:hover,
+textarea:hover{
     cursor: pointer;
     opacity: 0.8;
 }
@@ -16,23 +18,23 @@ a:hover{
 }
 
 .header_title{
-    font-size: 30px;
+    font-size: 20px;
     line-height: 50px;
     text-decoration: none;
     color: black;
     margin-left: 5px;
 }
-
 .header_login{
     display: flex;
+    font-size: 10px;
 }
 .header_login a{
-    margin-left:10px;
+    margin-left:5px;
     text-decoration: none;
     color: black;
 }
 .header_login button{
-    margin:0 10px 0 10px;
+    margin:0 10px 0 5px;
     padding: 5px 10px;
     border-radius: 5px;
     border: 2px solid #D07000;
@@ -40,11 +42,15 @@ a:hover{
     background-color: white;
 }
 
+.default_main{
+    padding-bottom: 50px;
+}
+
 .default_footer{
     position: fixed;
     bottom: 0;
     height: 50px;
-    width: 100%;
+    width: 100vw;
     background-color: #42032C;
 }
 .default_footer ul{
@@ -56,8 +62,30 @@ a:hover{
     list-style: none;
 }
 .default_footer a{
-    font-size: 14px;
+    font-size: 10px;
     color: white;
     text-decoration: none;
-    margin-right: 10px;
+    margin-right: 5px;
+}
+
+.add_button{
+	background-color: #D07000;
+}
+.update_button{
+	background-color: #D07000;
+}
+.delete_button{
+	background-color: #3B9AE1;
+}
+
+.alert{
+    color: rgb(255, 0, 0);
+    margin: 10px 0 5px 0;
+    text-align: center;
+}
+.error_li{
+    list-style: none;
+    color: red;
+    margin: 10px 0 5px 0;
+    text-align: center;
 }

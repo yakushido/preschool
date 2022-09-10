@@ -1,57 +1,180 @@
-.alert{
-    color: rgb(255, 0, 0);
-    margin: 5px;
-    text-align: center;
+.blog_create{
+    padding: 0 10px;
 }
-
-.blog{
-    width: 80%;
-    margin: 20px auto 0;
+.blog_add,
+.blog_detail,
+.blog_update{
+    width: 350px;
+    margin: 10px auto;
 }
-.blog_detail h4{
+.blog_lists{
+    width: 90%;
+    margin: 10px auto;
+}
+.blog_add,
+.blog_list,
+.blog_detail,
+.blog_update{
+    border-radius:5px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.blog_detail>h3,
+.blog_add>h3,
+.blog_add button,
+.blog_list_flex,
+.blog_update>h3,
+.blog_update button,
+.blog_evaluation .button{
+    color: white;
+    background-color: #D07000;
+}
+.blog_detail>h3,
+.blog_add>h3,
+.blog_lists>h3,
+.blog_list_flex,
+.blog_update>h3{
     height: 30px;
     line-height: 30px;
-    background-color: #D07000;
     border-radius:5px 5px 0 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
     text-align: center;
 }
-.blog_detail img{
+.blog_detail>div:first-of-type,
+.blog_add>form,
+.blog_update>form{
+    padding: 5px;
+}
+.blog_detail h4{
+    text-align: center;
+    padding: 5px;
+}
+.blog_detail img,
+.blog_update img{
     width: 100%;
-    border-radius:0 0 5px 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 .blog_detail p{
     border: 1px solid black;
     border-radius:5px;
     padding: 10px 30px;
+    margin: 10px;
+}
+.blog_add input,
+.blog_add textarea,
+.blog_update input,
+.blog_update textarea{
+    width: 90%;
+    height: 30px;
+    border: none;
+    margin: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.blog_add textarea,
+.blog_update textarea{
+    height: 60px;
+}
+.blog_add>form>div,
+.blog_update>form>div{
     margin: 10px 0;
 }
-
-.evaluation_form{
-    text-align: center;
+.blog_add .button,
+.blog_update .button{
+    text-align: end;
 }
-.evaluation_form select{
-    width: 30%;
+.blog_add .button button,
+.blog_update .button button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.blog_list{
+    margin-top: 10px;
+}
+.blog_list a{
+    text-decoration: none;
+    color: black;
+}
+.blog_list button{
+    width: 40px;
+    margin: -1px -10px 0 0;
+    background: none;
+    border: none;
+}
+.blog_list img{
+    width: 100%;
+}
+.blog_list_flex{
+    display: flex;
+    justify-content: space-between;
+}
+.blog_list p{
+    padding: 10px 20px;
+}
+
+.blog_update{
+    width: 70%;
+}
+.blog_update_old_img img{
+    margin-top: 5px;
+    width: 100%;
+}
+.blog_update_new_img p{
+    margin-left: 100px;
+}
+
+.blog_evaluation{
+    width: 70%;
+    text-align: center;
+    margin: 0 auto 10px;
+}
+.blog_evaluation a{
+    text-decoration: none;
+    color: black;
+}
+.blog_evaluation select{
+    width: 40%;
     height: 30px;
     border: none;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
-.evaluation_form button{
-    height: 30px;
+.blog_evaluation .button{
+    width: 40%;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-    background-color: #D07000;
-    margin-left: 10px;
 }
 
-.evaluation_login{
-    text-align: center;
-}
-.evaluation_login a{
-    text-decoration: none;
-    color: black;
+@media screen and (min-width:769px) {
+    .blog_create{
+        display: flex;
+    }
+    .blog_add{
+        width: 40%;
+        margin: 5px;
+        height: 350px;
+    }
+    .blog_lists{
+        width: 60%;
+        margin: 5px;    
+        border-radius:5px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .blog_lists>h3{
+        color: white;
+        background-color: #3B9AE1;
+    }
+    .blog_lists>div{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .blog_list{
+        width: 40%;
+    }
 }

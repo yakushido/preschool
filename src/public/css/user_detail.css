@@ -1,0 +1,9 @@
+.user_detail{
+    margin: 10px;
+}
+.user_detail_top>h3,
+.user_detail_top>h4{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}

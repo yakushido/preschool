@@ -1,0 +1,64 @@
+.mail>h3,
+.mail_done>h3{
+    height: 30px;
+    line-height: 30px;
+    border-radius:5px 5px 0 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    text-align: center;
+}
+.mail>form,
+.mail_done>div{
+    border-radius: 0 0 5px 5px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+}
+.mail>form>div{
+    margin-top: 10px;
+}
+.mail>form>div>p{
+    margin-top: 10px;
+}
+.mail select,
+.mail textarea{
+    width: 100%;
+    height: 30px;
+    border: none;
+    margin-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.mail textarea{
+    height: 60px;
+}
+.mail .button{
+    text-align: end;
+    margin-right: 20px;
+}
+.mail .button button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.mail,
+.mail_done{
+    width: 350px;
+    margin: 20px auto;
+}
+.mail>h3,
+.mail .button button,
+.mail_done>h3{
+    color: white;
+    background-color: #D07000;
+}
+
+.mail_done h4,
+.mail_done>div>div{
+    text-align: center;
+    margin: 20px;
+}
+.mail_done a{
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,48 @@
+.attendance_another_day{
+    width: 350px;
+    margin: 10px auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.attendance_another_day>form{
+    padding: 10px;
+}
+.attendance_another_day h3,
+.attendance_another_day button{
+    color: white;
+    background-color: #D07000;
+}
+.attendance_another_day h3{
+    height: 30px;
+    line-height: 30px;
+    border-radius:5px 5px 0 0;
+    padding: 10px;
+    text-align: center;
+}
+.attendance_another_day table{
+    margin: auto;
+}
+.attendance_another_day tr{
+    text-align: center;
+}
+.attendance_another_day td{
+    padding: 5px;
+}
+.attendance_another_day input,
+.attendance_another_day select{
+    margin-left: 20px;
+    width: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    height: 25px;
+    border-radius:5px;
+}
+.button{
+    text-align: end;
+}
+.button button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 20px;
+}

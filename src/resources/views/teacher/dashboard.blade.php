@@ -1,19 +1,17 @@
 @extends('teacher.layouts.default')
 @section('contents')
 
-<div>
-    <h2>教員用ページ</h2>
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
-</div>
+<link rel="stylesheet" href="{{ asset('css/teacher_dashboard.css') }}">
 
-<div>
+<div class="dashboard">
+
+    <h3>教員用ページ</h3>
+
     <div class="user_list">
-        <h3>{{ $teacher['team']['name'] }}組園児リスト</h3>
-        <table>
+
+        <h4>{{ $teacher['team']['name'] }}組園児リスト</h4>
+        
+        <table class="user_list_table">
             <tr>
                 <th>名前</th>
                 <th>今日の出欠</th>
@@ -25,7 +23,7 @@
                 </td>
                 <td>
                     @if( $team_user['UserAttendances']->where('date','=',\Carbon\Carbon::now()->format("Y-m-d"))->where('user_id','=',$team_user['id'])->first() === null )
-                    <form action="{{ route('teacher.attendance.add',$team_user['id']) }}" method="POST">
+                    <form action="{{ route('teacher.attendance.add',$team_user['id']) }}" method="POST" class="user_list_table_form">
                         @csrf
                         <input type="text" name="date" value="{{ \Carbon\Carbon::now()->format("Y-m-d") }}" hidden>
                         <select name="attendance_id">
@@ -42,15 +40,48 @@
             </tr>
             @endforeach
         </table>
+
     </div>
+    
 </div>
 
-<div class="mail">
-    <a href="/teacher/mail">メールの送信はこちらから</a>
-    <a href="/teacher/blog">ブログの追加はこちら</a>
-    <a href="/teacher/photo">写真の追加はこちら</a>
-    <a href="{{ route('teacher.event') }}">イベントの追加はこちら</a>
-    <a href="/register">園児の追加はこちら</a>
+<div class="category">
+
+    <div class="category_mail">    
+        <a href="/teacher/mail">
+            <img src="/storage/img/icon_mail.jpg" alt="">
+            <span>メールの送信</span>  
+        </a>
+    </div>
+
+    <div class="category_blog">
+        <a href="/teacher/blog">
+            <img src="/storage/img/icon_blog.jpg" alt="">
+            <span>ブログの追加</span>
+        </a>
+    </div>
+
+    <div class="category_photo">
+        <a href="/teacher/photo">
+            <img src="/storage/img/icon_photo.jpg" alt="">
+            <span>写真の追加</span>
+        </a>
+    </div>
+
+    <div class="category_event">
+        <a href="{{ route('teacher.event') }}">
+            <img src="/storage/img/icon_event.jpg" alt="">
+            <span>イベントの追加</span>
+        </a>
+    </div>
+
+    <div class="category_user">
+        <a href="/register">
+            <img src="/storage/img/icon_user.jpg" alt="">
+            <span>園児の追加</span>
+        </a>
+    </div>
+    
 </div>
 
 

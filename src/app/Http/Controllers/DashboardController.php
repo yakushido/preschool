@@ -47,7 +47,7 @@ class DashboardController extends Controller
 
         $user_attendances = UserAttendance::where('user_id','=',Auth::id())->get();
         $attendance_lists = Attendance::all();
-        $gallerys = Photo::all();
+        $gallerys = Photo::orderBy('created_at','desc')->get();
 
         return view('dashboard', compact(
             'weeks',

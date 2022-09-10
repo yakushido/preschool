@@ -1,19 +1,105 @@
-.event{
-    width: 80%;
-    margin: 20px auto 0;
+.event_detail,
+.event_create,
+.event_lists{
+    margin: 10px auto;
+    border-radius:5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
-.event h3{
+.event_detail,
+.event_create{
+    width: 350px;
+}
+.event_lists{
+    width: 90%;
+}
+.event_detail>h3,
+.event_create>h3,
+.event_lists>h3{
     height: 30px;
     line-height: 30px;
-    background-color: #D07000;
     border-radius:5px 5px 0 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
     text-align: center;
 }
-.event p{
-    border-radius: 0 0 5px 5px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    padding: 20px 30px;
+.event_detail>h3,
+.event_create>h3,
+.event_create .add_button,
+.event_lists>h3{
+    color: white;
+    background-color: #D07000;
+}
+.event_detail h4{
+    text-align: center;
+    margin: 10px;
+}
+.event_detail p{
+    margin: 10px;
+    line-height: 20px;
+}
+.event_create>form,
+.event_lists>form{
+    padding: 5px;
+}
+.event_create input,
+.event_create textarea,
+.event_lists input,
+.event_lists textarea{
+    width: 90%;
+    border: none;
+    margin: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.event_create input,
+.event_lists input{
+    height: 30px;
+}
+.event_create textarea,
+.event_lists textarea{
+    height: 60px;
+}
+.event_create .button,
+.event_lists .button{
+    text-align: end;
+    margin-right: 10px;
+}
+.event_create .button button,
+.event_lists .button button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
 
+.event_lists .button_flex{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.event_list{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+@media screen and (min-width:769px) {
+    .event_responce{
+        display: flex;
+        justify-content: space-around;
+    }
+    .event_create{
+        width: 50%;
+        height: 310px;
+        margin: 5px;
+    }
+    .event_lists{
+        width: 50%;
+        margin: 5px;
+    }
+    .event_create textarea,
+    .event_lists textarea{
+        height: 120px;
+    }
 }

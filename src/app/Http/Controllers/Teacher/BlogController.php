@@ -31,7 +31,9 @@ class BlogController extends Controller
             'img_path' => $path
         ]);
 
-        return redirect()->route('teacher.blog');
+        return redirect()
+            ->route('teacher.blog')
+            ->withStatus("追加しました");
     }
 
     public function delete($id)
@@ -41,14 +43,16 @@ class BlogController extends Controller
         $blog_delete->delete();
         Storage::disk('public')->delete($blog_delete->img_path);
 
-        return redirect()->route('teacher.blog');
+        return redirect()
+            ->route('teacher.blog')
+            ->withStatus("削除しました");
     }
 
     public function teacher_detail($id)
     {
         $blog_detail = Blog::find($id);
 
-        return view('teacher.blog_detail',compact('blog_detail'));
+        return view('teacher.blog_update',compact('blog_detail'));
     }
 
     public function update(Request $request, $id)
@@ -68,7 +72,9 @@ class BlogController extends Controller
 
         $blog_update->save();
 
-        return redirect()->route('teacher.blog');
+        return redirect()
+            ->route('teacher.blog')
+            ->withStatus("更新しました");
     }
 
     public function detail($id)

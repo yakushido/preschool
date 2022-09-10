@@ -1,59 +1,60 @@
 @extends('teacher.layouts.default')
 @section('contents')
 
-<div class="blog_add"> 
+<link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+<link rel="stylesheet" href="{{ asset('css/photo.css') }}">
 
-    <h3>ブログの投稿</h3>
+<div class="blog_create">
 
-    <!-- Validation Errors -->
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <div class="blog_add"> 
 
-    <form action="{{ route('teacher.blog.add') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div>
-            <label for="title">タイトル：</label>
-            <input type="text" name="title">
-        </div>
-        <div>
-            <label for="content">内容：</label>
-            <input type="text" name="content">
-        </div>
-        <div>
-            <label for="img_path">写真:</label>
-            <input type="file" name="img_path">
-        </div>
-        <div>
-            <button>投稿</button>
-        </div>
-    </form>
-</div>
+        <h3>ブログの投稿</h3>
 
-<div class="blog_lists">
-
-    <h3>過去のブログリスト</h3>
-
-    @foreach( $blog_lists as $blog_list )
-    <div>
-        <h3><a href="{{ route('teacher.blog.detail',$blog_list['id'])  }}">{{ $blog_list['title'] }}</a></h3>
-        <p>{{ $blog_list['content'] }}</p>
-        <img src="{{ Storage::url($blog_list['img_path']) }}" alt="">
-    </div>
-    <div>
-        <form action="{{ route('teacher.blog.delete',$blog_list['id']) }}" method="POST">
+        <form action="{{ route('teacher.blog.add') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <button>削除</button>
+            <div>
+                <label for="title">タイトル：</label>
+                <input type="text" name="title">
+            </div>
+            <div>
+                <label for="content">内容：</label>
+                <textarea name="content" cols="30" rows="10"></textarea>
+            </div>
+            <div>
+                <div>写真：<span class="js-upload-filename">ファイルが未選択です</span></div>
+                <label for="img_path" class="filelabel">ファイルを選択
+                    <input type="file" name="img_path" id="img_path" class="js-upload-file">
+                </label>
+            </div>
+            <div class="button">
+                <button>投稿</button>
+            </div>
         </form>
     </div>
-    @endforeach
-    {{ $blog_lists->links('pagination::bootstrap-4') }}
-</div>
 
+    <div class="blog_lists">
+
+        <h3>過去のブログリスト</h3>
+
+        <div>
+            @foreach( $blog_lists as $blog_list )
+            <div class="blog_list">
+                <div class="blog_list_flex">
+                    <h3><a href="{{ route('teacher.blog.detail',$blog_list['id'])  }}">{{ $blog_list['title'] }}</a></h3>
+                    <form action="{{ route('teacher.blog.delete',$blog_list['id']) }}" method="POST">
+                        @csrf
+                        <button>
+                            <img src="/storage/img/icon_delete.jpg" alt="">
+                        </button>
+                    </form>
+                </div>
+                <img src="{{ Storage::url($blog_list['img_path']) }}" alt="">
+                <p>{{ $blog_list['content'] }}</p>
+            </div>
+            @endforeach
+        </div>
+        {{ $blog_lists->links('pagination::bootstrap-4') }}
+    </div>
+
+</div>
 @endsection

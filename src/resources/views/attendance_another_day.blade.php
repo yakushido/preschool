@@ -1,41 +1,33 @@
 @extends('layouts.default')
 @section('contents')
 
-<div>
-    <h3>別日の欠席連絡</h3>
+<link rel="stylesheet" href="{{ asset('css/attendance_another_day.css') }}">
 
-    <!-- Validation Errors -->
-    @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    @if (session('status'))
-        <div class="alert alert-success" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
+<div class="attendance_another_day">
+    
+    <h3>別日の欠席連絡フォーム</h3>
 
     <form action="{{ route('attendance.add',Auth::id()) }}" method="POST">
         @csrf
-        <div>
-            <label for="date">日にち：</label>
-            <input type="date" name="date">
-        </div>
-        <div>
-            <label for="attendance_id">項目：</label>
-            <select name="attendance_id">
-                @foreach( $attendance_lists as $attendance_list )
-                    <option value="{{ $attendance_list['id'] }}">{{ $attendance_list['name'] }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div>
+        <table>
+            <tr>
+                <th>日にち：</th>
+                <td>
+                    <input type="date" name="date">
+                </td>
+            </tr>
+            <tr>
+                <th>項目：</th>
+                <td>
+                    <select name="attendance_id">
+                        @foreach( $attendance_lists as $attendance_list )
+                            <option value="{{ $attendance_list['id'] }}">{{ $attendance_list['name'] }}</option>
+                        @endforeach
+                    </select>                
+                </td>
+            </tr>
+        </table>
+        <div class="button">
             <button>送信</button>
         </div>
     </form>

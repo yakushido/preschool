@@ -98,7 +98,6 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
     Route::post('/photo/add',[PhotoController::class,'add'])->name('photo.add');
     Route::post('/photo/delete/{id}',[PhotoController::class,'delete'])->name('photo.delete');
 
-    Route::get('/event/get_add/{id}',[EventController::class,'get_add'])->name('event.get_add');
     Route::post('/event/add/{id}',[EventController::class,'add'])->name('event.add');
     Route::post('/event/delete/{id}',[EventController::class,'delete'])->name('event.delete');
     Route::get('/event/create_get',[EventController::class,'create_get'])->name('event.create_get');

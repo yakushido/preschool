@@ -1,0 +1,50 @@
+.dashboard{
+    margin: 10px;
+    
+}
+.dashboard>h3{
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.category{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 100px;
+    justify-content: center;
+    margin-top: 10px;
+}
+.category a{
+    display: flex;
+}
+.category img{
+    margin-left: 5px;
+    height: 100%;
+}
+.category a{
+    height: 100%;
+    text-decoration: none;
+    color: black;
+}
+.category span{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+.category_teacher_create{
+    background-color: #A62349;
+}
+.category_admin_create{
+    background-color: #D07000;
+}
+
+@media screen and (min-width:769px) {
+    .category{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100px;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}

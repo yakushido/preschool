@@ -26,9 +26,48 @@
 
     </header>
 
-    <main>
+    <main class="default_main">
+
+        <!-- Validation Errors -->
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="error_li">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (session('status'))
+            <div class="alert" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+
         @yield('contents')
+        
     </main>
+
+    <footer class="default_footer">
+
+        <ul>
+            <li><a href="">QRコード</a></li>
+            <li><a href="/admin/login">管理者用ログイン</a></li>
+            <li><a href="/teacher/login">教員用ログイン</a></li>
+        </ul>
+        
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+        $('.js-upload-file').on('change', function () { //ファイルが選択されたら
+            var file = $(this).prop('files')[0]; //ファイルの情報を代入(file.name=ファイル名/file.size=ファイルサイズ/file.type=ファイルタイプ)
+            $('.js-upload-filename').text(file.name); //ファイル名を出力
+        });
+        });
+    </script>
 
 </body>
 </html>

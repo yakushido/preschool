@@ -47,31 +47,22 @@ class EventController extends Controller
 
         $event_dates = EventDate::all(); 
 
-        return view('teacher.event.event', compact(
+        $event_lists = Event::all();
+
+        return view('teacher.event', compact(
             'weeks',
             'dates', 
             'firstDayOfMonth',
-            'event_dates'
+            'event_dates',
+            'event_lists'
         ));
     }
 
-    public function get_add($id)
-    {
-        $event_date = $id;
-
-        $events = Event::all();
-
-        return view('teacher.event.event_add', compact(
-            'event_date',
-            'events'
-        ));
-    }
-
-    public function add(Request $request)
+    public function add(Request $request, $id)
     {
         $eventdate = EventDate::create([
             'event_id' => $request->event_id,
-            'date' => $request->date
+            'date' => $id
         ]);
 
         return redirect()
@@ -85,16 +76,8 @@ class EventController extends Controller
         $event_delete->delete();
 
         return redirect()
-            ->route('teacher.event');
-    }
-
-    public function create_get()
-    {
-        $event_lists = Event::all();
-
-        return view('teacher.event.event_create',compact(
-            'event_lists'
-        ));
+            ->route('teacher.event')
+            ->withStatus("削除しました");
     }
 
     public function create(Request $request)
@@ -105,11 +88,11 @@ class EventController extends Controller
         ]);
 
         return redirect()
-            ->route('teacher.event.create_get')
+            ->route('teacher.event')
             ->withStatus("登録しました");;
     }
 
-    public function create_update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $event_update = Event::find($id);
 
@@ -119,7 +102,7 @@ class EventController extends Controller
         $event_update->save();
 
         return redirect()
-            ->route('teacher.event.create_get')
+            ->route('teacher.event')
             ->withStatus("更新しました");
     }
 
@@ -130,7 +113,7 @@ class EventController extends Controller
         $event_delete->delete();
 
         return redirect()
-            ->route('teacher.event.create_get')
+            ->route('teacher.event')
             ->withStatus("削除しました");
     }
 
