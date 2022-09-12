@@ -2,9 +2,12 @@
     padding: 0 10px;
 }
 .blog_add,
-.blog_detail,
 .blog_update{
     width: 350px;
+    margin: 10px auto;
+}
+.blog_detail{
+    width: 400px;
     margin: 10px auto;
 }
 .blog_lists{
