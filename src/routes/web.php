@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 Route::get('/',[HomeController::class,'index'])->name('index');
 Route::get('/event/detail/{id}',[EventController::class,'event_detail'])->name('event.detail');
 Route::get('/blog/detail/{id}',[BlogController::class,'detail'])->name('blog.detail');
+Route::get('/qrcode',[HomeController::class,'qrcode']);
 
 // user --------------------------------------------------------------------
 

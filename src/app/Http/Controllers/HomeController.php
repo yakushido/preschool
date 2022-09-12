@@ -8,6 +8,7 @@ use App\Models\EventDate;
 use App\Models\UserAttendance;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,15 @@ class HomeController extends Controller
             'blogs',
             'event_lists',
             'today_attendance'
+        ));
+    }
+
+    public function qrcode()
+    {
+        $qrcode = QrCode::size(300)->generate('/');
+
+        return view('qrcode_welcome', compact(
+            'qrcode'
         ));
     }
 }

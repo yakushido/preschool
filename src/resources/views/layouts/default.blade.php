@@ -53,7 +53,7 @@
     <footer class="default_footer">
 
         <ul>
-            <li><a href="">QRコード</a></li>
+            <li><a href="/qrcode">QRコード</a></li>
             <li><a href="/admin/login">管理者用ログイン</a></li>
             <li><a href="/teacher/login">教員用ログイン</a></li>
         </ul>
