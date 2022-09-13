@@ -101,8 +101,9 @@
 
 - 教員の登録
 - 管理者の登録
+
     管理者のログイン
 
-        email:admin@example.com
-        
-        password:admin@example.com
+    email:admin@example.com
+
+    password:admin@example.com
