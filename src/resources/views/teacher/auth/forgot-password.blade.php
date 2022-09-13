@@ -1,4 +1,4 @@
-@extends('teacher.layouts.default')
+@extends('teacher.layouts.auth_default')
 @section('contents')
 
 <link rel="stylesheet" href="{{ asset('css/forgot_password.css') }}">

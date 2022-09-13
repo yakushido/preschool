@@ -64,7 +64,7 @@
                 @foreach($blogs as $blog)
                 <a class="blog_card_item" href="/blog/detail/{{ $blog->id }}">
                     <h4>{{ $blog['title'] }}</h4>
-                    <img src="{{ Storage::url($blog->img_path) }}" alt="ブログimage">
+                    <img src="{{  Storage::url($blog->img_path) }}" alt="ブログimage">
                 </a>
                 @endforeach
             </div>
@@ -74,7 +74,7 @@
         </div>
 
         <div class="event">
-            <img src="{{ Storage::url('img/blog_bg.jpg') }}" alt="">
+            <img src="{{ asset('img/blog_bg.jpg') }}" alt="">
             <div>
                 <h3>イベント情報</h3>
                 <ul>

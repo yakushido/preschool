@@ -42,7 +42,7 @@
                 <form action="{{ route('teacher.photo.delete',$photo_list['id']) }}" method="POST">
                     @csrf
                     <button>
-                        <img src="/storage/img/icon_delete.jpg" alt="">
+                        <img src="{{ asset('img/icon_delete.jpg') }}" alt="">
                     </button>
                 </form>
             </div>

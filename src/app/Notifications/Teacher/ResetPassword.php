@@ -77,11 +77,11 @@ class ResetPassword extends Notification
     protected function buildMailMessage($url)
     {
         return (new MailMessage)
-            ->subject(Lang::get('Reset Password Notification'))
-            ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
-            ->action(Lang::get('Reset Password'), $url)
+            ->subject('パスワードリセットです')
+            ->line('このメールは、お客様のアカウントのパスワード再設定リクエストを受信したために送信されています。')
+            ->action('パスワードをリセットする', $url)
             ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('teacher.auth.passwords.' . config('reacher.auth.defaults.passwords') . '.expire')]))
-            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
+            ->line('パスワードの再設定を要求していない場合は、これ以上の操作は必要ありません。');
     }
 
     /**

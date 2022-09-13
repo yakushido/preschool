@@ -1,4 +1,4 @@
-@extends('admin.layouts.default')
+@extends('admin.layouts.auth_default')
 @section('contents')
 
 <link rel="stylesheet" href="{{ asset('css/forgot_password.css') }}">

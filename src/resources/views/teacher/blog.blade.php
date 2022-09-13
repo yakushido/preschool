@@ -44,7 +44,7 @@
                     <form action="{{ route('teacher.blog.delete',$blog_list['id']) }}" method="POST">
                         @csrf
                         <button>
-                            <img src="/storage/img/icon_delete.jpg" alt="">
+                            <img src="{{ asset('img/icon_delete.jpg') }}" alt="">
                         </button>
                     </form>
                 </div>

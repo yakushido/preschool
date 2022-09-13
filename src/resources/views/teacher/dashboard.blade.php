@@ -49,35 +49,35 @@
 
     <div class="category_mail">    
         <a href="/teacher/mail">
-            <img src="/storage/img/icon_mail.jpg" alt="">
+            <img src="{{ asset('img/icon_mail.jpg') }}" alt="">
             <span>メールの送信</span>  
         </a>
     </div>
 
     <div class="category_blog">
         <a href="/teacher/blog">
-            <img src="/storage/img/icon_blog.jpg" alt="">
+            <img src="{{ asset('img/icon_blog.jpg') }}" alt="">
             <span>ブログの追加</span>
         </a>
     </div>
 
     <div class="category_photo">
         <a href="/teacher/photo">
-            <img src="/storage/img/icon_photo.jpg" alt="">
+            <img src="{{ asset('img/icon_photo.jpg') }}" alt="">
             <span>写真の追加</span>
         </a>
     </div>
 
     <div class="category_event">
         <a href="{{ route('teacher.event') }}">
-            <img src="/storage/img/icon_event.jpg" alt="">
+            <img src="{{ asset('img/icon_event.jpg') }}" alt="">
             <span>イベントの追加</span>
         </a>
     </div>
 
     <div class="category_user">
         <a href="/register">
-            <img src="/storage/img/icon_user.jpg" alt="">
+            <img src="{{ asset('img/icon_user.jpg') }}" alt="">
             <span>園児の追加</span>
         </a>
     </div>

@@ -9,7 +9,7 @@
 
     <div class="photo_shop_response_flex">
     
-        <img src="{{ Storage::url($gallery['img_path'])  }}" alt="クラスimage">
+        <img src="{{  Storage::url($gallery['img_path'])  }}" alt="クラスimage">
 
         <div class="photo_shop_response">
 

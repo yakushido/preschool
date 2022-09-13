@@ -35,3 +35,11 @@
     border-radius: 5px;
     padding: 5px 10px;
 }
+
+.send_varified_email{
+    padding: 10px;
+}
+.send_varified_email>h1{
+    color: white;
+    background-color: #D07000;
+}
