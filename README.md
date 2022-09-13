@@ -1,11 +1,8 @@
-<p align="center">ABC保育園</p width="400">
+# ABC保育園
 
 ## 概要
 
-保育園のウェブサイト。
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/
+保育園のウェブサイト
 
 ## 環境構築手順
 
@@ -105,5 +102,7 @@
 - 教員の登録
 - 管理者の登録
     管理者のログイン
+
         email:admin@example.com
+        
         password:admin@example.com
