@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
     {
         $team_lists = Team::all();
 
-        return view('Auth.register',compact(
+        return view('auth.register',compact(
             'team_lists'
         ));
     }
