@@ -1,7 +1,11 @@
 @extends('teacher.layouts.auth_default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\reset_password.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/reset_password.css') }}">
+@endif
 
 <div class="reset_password">
 

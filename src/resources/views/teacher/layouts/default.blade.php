@@ -4,8 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @if(app('env') == 'production')
+    <link rel="stylesheet" href="{{ secure_asset('css\reset.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('css\default.css') }}">
+    @else
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/default.css') }}">
+    @endif
+    
     <title>ABC保育園</title>
 </head>
 <body>

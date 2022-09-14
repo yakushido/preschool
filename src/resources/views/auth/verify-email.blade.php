@@ -1,7 +1,11 @@
 @extends('layouts.auth_default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\verify_email.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/verify_email.css') }}">
+@endif
 
 <div class="verify_email">
 

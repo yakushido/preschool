@@ -1,7 +1,11 @@
 @extends('admin.layouts.auth_default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\register.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+@endif
 
 <div class="register">
 

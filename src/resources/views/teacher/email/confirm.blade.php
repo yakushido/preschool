@@ -1,7 +1,11 @@
 @extends('teacher.layouts.default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\mail.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/mail.css') }}">
+@endif
 
   <div class="mail">
 

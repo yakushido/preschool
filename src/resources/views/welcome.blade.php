@@ -1,7 +1,11 @@
 @extends('layouts.default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\welcome.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+@endif
 
 <div class="welcome">
 

@@ -1,7 +1,11 @@
 @extends('teacher.layouts.default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\photo.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/photo.css') }}">
+@endif
 
 <div class="photo_responce">
 

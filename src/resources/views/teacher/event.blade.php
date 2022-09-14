@@ -1,8 +1,13 @@
 @extends('teacher.layouts.default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\calendar.css') }}">
+<link rel="stylesheet" href="{{ secure_asset('css/event.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
 <link rel="stylesheet" href="{{ asset('css/event.css') }}">
+@endif
 
     <div class="calendar_form">
 

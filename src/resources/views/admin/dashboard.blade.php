@@ -1,7 +1,11 @@
 @extends('admin.layouts.default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\admin_dashboard.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/admin_dashboard.css') }}">
+@endif
 
 <div class="dashboard">
 

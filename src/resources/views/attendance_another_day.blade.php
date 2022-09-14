@@ -1,7 +1,11 @@
 @extends('layouts.default')
 @section('contents')
 
+@if(app('env') == 'production')
+<link rel="stylesheet" href="{{ secure_asset('css\attendance_another_day.css') }}">
+@else
 <link rel="stylesheet" href="{{ asset('css/attendance_another_day.css') }}">
+@endif
 
 <div class="attendance_another_day">
     
