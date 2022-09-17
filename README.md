@@ -12,12 +12,18 @@
 
 2.Dockerのコンテナを作成、起動
 
+ - $ cd preschool
+
  - $ docker compose up -d --build
   
 4..envファイルの書き換え
 
  - $ docker-compose exec app bash
+
+ - $ composer install
+ 
  - $ cp .env.example .env
+
  - .env内の下記項目を次に書き換え
 
     DB_CONNECTION=mysql
@@ -40,17 +46,11 @@
 
  - $ php artisan key:generate
 
-7.マイグレーションの実行
+7.マイグレーション・シーダーの実行
 
- - $ docker-compose exec app bash
+ - $ php artisan migrate:refresh --seed
 
- - $ php artisan migrate
-
-8.シーダーの実行
-
- - $ php artisan db:seed
-
-9.シンボリックリンクを設定する
+8.シンボリックリンクを設定する
 
  - $ php artisan storage:link
 
