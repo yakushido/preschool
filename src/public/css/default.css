@@ -1,5 +1,7 @@
 
 input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
 input[type="date"]:hover,
 button:hover,
 select:hover,
@@ -69,12 +71,15 @@ textarea:hover{
 }
 
 .add_button{
+    color: white;
 	background-color: #D07000;
 }
 .update_button{
+    color: white;
 	background-color: #D07000;
 }
 .delete_button{
+    color: white;
 	background-color: #3B9AE1;
 }
 

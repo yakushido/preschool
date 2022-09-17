@@ -35,11 +35,22 @@
 
     <main>
 
-    @if (session('status'))
-        <div class="alert" role="alert">
-            {{ session('status') }}
-        </div>
-    @endif
+        <!-- Validation Errors -->
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li class="error_li">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (session('status'))
+            <div class="alert" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
 
         @yield('contents')
     

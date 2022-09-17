@@ -16,6 +16,8 @@ use App\Http\Controllers\Teacher\EventController;
 use App\Http\Controllers\Teacher\MailController;
 
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\EditTeacherController;
+use App\Http\Controllers\Admin\EditAdminController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 
 
@@ -65,10 +67,17 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     Route::get('/dashboard',[AdminDashboardController::class,'index'])->name('dashboard');
 
-    Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
+    Route::get('/edit_teacher',[EditTeacherController::class,'index']);
+    Route::post('/edit_teacher/update/{id}',[EditTeacherController::class,'update'])->name('teacher_update');
+    Route::post('/edit_teacher/delete/{id}',[EditTeacherController::class,'delete'])->name('teacher_delete');
 
+    Route::get('/edit_admin',[EditAdminController::class,'index']);
+    Route::post('/edit_admin/update/{id}',[EditAdminController::class,'update'])->name('admin_update');
+    Route::post('/edit_admin/delete/{id}',[EditAdminController::class,'delete'])->name('admin_delete');
+
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('register', [RegisteredUserController::class, 'store']);
+
 
     });
 
@@ -84,6 +93,9 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
     Route::get('/dashboard',[TeacherDashboardController::class,'index'])->name('dashboard');
 
     Route::get('/user_detail/{id}/{year?}/{month?}',[TeacherDashboardController::class,'user_detail'])->name('user_detail');
+    Route::get('/user_update_get/{id}',[TeacherDashboardController::class,'user_update_get'])->name('user_update_get');
+    Route::post('/user_update/{id}',[TeacherDashboardController::class,'user_update'])->name('user_update');
+    Route::post('/user_delete/{id}',[TeacherDashboardController::class,'user_delete'])->name('user_delete');
 
     Route::post('/attentance/add/{id}',[TeacherAttendanceController::class,'add'])->name('attendance.add');
     Route::post('/attendance/delete/{id}',[TeacherAttendanceController::class,'delete'])->name('attendance.delete');

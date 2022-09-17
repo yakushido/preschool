@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mail\ToUserMail;
 use Illuminate\Support\Facades\Mail;
-
 use App\Models\User;
 
 class MailController extends Controller
@@ -16,7 +15,9 @@ class MailController extends Controller
     {
         $users = User::all();
 
-        return view('teacher.email.index',compact('users'));
+        return view('teacher.email.index',compact(
+            'users'
+        ));
     }
 
     public function confirm(Request $request)
@@ -25,7 +26,10 @@ class MailController extends Controller
         $result = [];
         $result['body'] = $request->body;
 
-        return view('teacher.email.confirm', compact('confirm_user','result'));
+        return view('teacher.email.confirm', compact(
+            'confirm_user',
+            'result'
+        ));
     }
 
     public function send(Request $request)

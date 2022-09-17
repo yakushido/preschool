@@ -19,12 +19,6 @@
     line-height: 50px;
     border-radius:5px 5px 0 0;
 }
-.error_li{
-    list-style: none;
-    color: red;
-    margin-bottom: 5px;
-    text-align: center;
-}
 
 .register input,
 .register select{

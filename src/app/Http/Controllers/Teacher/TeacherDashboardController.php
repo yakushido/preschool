@@ -9,8 +9,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Team;
 use App\Models\UserAttendance;
 use App\Models\Attendance;
+use App\Http\Requests\EditUserRequest;
 
 class TeacherDashboardController extends Controller
 {
@@ -74,5 +76,42 @@ class TeacherDashboardController extends Controller
             'user_attendances',
             'attendance_lists'
         ));
+    }
+
+    public function user_update_get($id)
+    {
+        $user = User::find($id);
+        $team_lists = Team::all();
+
+        return view('teacher.user_update', compact(
+            'user',
+            'team_lists'
+        ));
+    }
+
+    public function user_update(EditUserRequest $request, $id)
+    {
+        $user_update = User::find($id);
+
+        $user_update['name'] = $request['name'];
+        $user_update['email'] = $request['email'];
+        $user_update['team_id'] = $request['team_id'];
+
+        $user_update->save();
+
+        return redirect()
+            ->back()
+            ->withStatus("更新しました");
+    }
+
+    public function user_delete($id)
+    {
+        $user_delete = User::find($id);
+
+        $user_delete->delete();
+
+        return redirect()
+            ->route('teacher.dashboard')
+            ->withStatus("削除しました");
     }
 }

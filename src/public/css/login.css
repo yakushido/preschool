@@ -20,13 +20,6 @@
         border-radius:5px 5px 0 0;
 }
 
-.error_li{
-        list-style: none;
-        color: red;
-        margin-bottom: 5px;
-        text-align: center;
-}
-
 .login input{
         margin-left:25px ;
         width: 90%;

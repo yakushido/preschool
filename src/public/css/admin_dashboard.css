@@ -1,6 +1,5 @@
 .dashboard{
     margin: 10px;
-    
 }
 .dashboard>h3{
     height: 20px;
@@ -11,21 +10,19 @@
 .category{
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 100px 100px;
+    grid-template-rows: 100px 100px 100px 100px;
     justify-content: center;
     margin-top: 10px;
 }
 .category a{
     display: flex;
+    height: 100%;
+    text-decoration: none;
+    color: black;
 }
 .category img{
     margin-left: 5px;
     height: 100%;
-}
-.category a{
-    height: 100%;
-    text-decoration: none;
-    color: black;
 }
 .category span{
     display: flex;
@@ -38,12 +35,19 @@
 .category_admin_create{
     background-color: #D07000;
 }
+.category_teacher_edit{
+    background-color: #96E5D1;
+}
+.category_admin_edit{
+    background-color: #FF9551;
+}
+
 
 @media screen and (min-width:769px) {
     .category{
         display: grid;
         grid-template-columns: 50% 50%;
-        grid-template-rows: 100px;
+        grid-template-rows: 100px 100px;
         justify-content: center;
         margin-top: 10px;
     }

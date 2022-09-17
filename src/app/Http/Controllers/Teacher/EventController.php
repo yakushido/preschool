@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Carbon\Carbon;
 use App\Models\Event;
 use App\Models\EventDate;
+use App\Http\Requests\EventRequest;
 
 class EventController extends Controller
 {
@@ -80,7 +81,7 @@ class EventController extends Controller
             ->withStatus("削除しました");
     }
 
-    public function create(Request $request)
+    public function create(EventRequest $request)
     {
         Event::create([
             'name' => $request->name,
@@ -92,7 +93,7 @@ class EventController extends Controller
             ->withStatus("登録しました");;
     }
 
-    public function update(Request $request, $id)
+    public function update(EventRequest $request, $id)
     {
         $event_update = Event::find($id);
 

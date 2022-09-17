@@ -16,14 +16,16 @@ class BlogController extends Controller
     {
         $blog_lists = Blog::orderBy('created_at','desc')-> paginate(4);
 
-        return view('teacher.blog',compact('blog_lists'));
+        return view('teacher.blog',compact(
+            'blog_lists'
+        ));
     }
 
     public function add(BlogRequest $request)
     {
-        $img = $request->file('img_path');
-
-        $path = $img->store('img','public');
+        $img = $request->file('img_path')->getClientOriginalName();
+        
+        $path = $request->file('img_path')->storeAs('public/img',$img);
 
         Blog::create([
             'title' => $request->title,
@@ -40,8 +42,13 @@ class BlogController extends Controller
     {
         $blog_delete = Blog::find($id);
 
+        $path = $blog_delete['img_path'];
+
+        if ($path !== '') {
+            Storage::disk('public')->delete(substr($path,7));
+        }
+
         $blog_delete->delete();
-        Storage::disk('public')->delete($blog_delete->img_path);
 
         return redirect()
             ->route('teacher.blog')
@@ -52,7 +59,9 @@ class BlogController extends Controller
     {
         $blog_detail = Blog::find($id);
 
-        return view('teacher.blog_update',compact('blog_detail'));
+        return view('teacher.blog_update',compact(
+            'blog_detail'
+        ));
     }
 
     public function update(Request $request, $id)

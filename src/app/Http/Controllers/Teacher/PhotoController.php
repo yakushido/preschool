@@ -4,10 +4,12 @@ namespace App\Http\Controllers\teacher;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Team;
 use App\Models\Photo;
 use App\Models\History;
+use App\Http\Requests\PhotoRequest;
 
 class PhotoController extends Controller
 {
@@ -17,14 +19,17 @@ class PhotoController extends Controller
 
         $photo_lists = Photo::orderBy('created_at','desc')->paginate(4);
 
-        return view('teacher.photo',compact('team_lists','photo_lists'));
+        return view('teacher.photo',compact(
+            'team_lists',
+            'photo_lists'
+        ));
     }
 
-    public function add(Request $request)
+    public function add(PhotoRequest $request)
     {
-        $img = $request->file('img_path');
-
-        $path = $img->store('img','public');
+        $img = $request->file('img_path')->getClientOriginalName();
+        
+        $path = $request->file('img_path')->storeAs('public/img',$img);
 
         Photo::create([
             'team_id' => $request->team_id,
@@ -39,6 +44,12 @@ class PhotoController extends Controller
     public function delete($id)
     {
         $photo_delete = Photo::find($id);
+
+        $path = $photo_delete['img_path'];
+
+        if ($path !== '') {
+            Storage::disk('public')->delete(substr($path,7));
+        }
 
         $photo_delete->delete();
 

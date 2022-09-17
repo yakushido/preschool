@@ -20,10 +20,24 @@
             </a>
         </div>
 
+        <div class="category_teacher_edit">
+            <a href="/admin/edit_teacher">
+                <img src="{{ asset('img/edit_icon.jpg') }}" alt=""> 
+                <span>教員の編集</span>
+            </a>
+        </div>
+
         <div class="category_admin_create">
             <a href="/admin/register">
                 <img src="{{ asset('img/icon_user.jpg') }}" alt="">
                 <span>管理者の新規登録</span>
+            </a>
+        </div>
+
+        <div class="category_admin_edit">
+            <a href="/admin/edit_admin">
+                <img src="{{ asset('img/edit_icon.jpg') }}" alt="">
+                <span>管理者の編集</span>
             </a>
         </div>
 

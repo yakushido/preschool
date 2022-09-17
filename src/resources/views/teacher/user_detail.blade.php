@@ -15,7 +15,7 @@
 
     <div class="user_detail_top">
         <h3>園児詳細ページ</h3>
-        <h4>園児名：{{ $user_detail['name'] }}</h4>
+        <h4>園児名：<a href="/teacher/user_update_get/{{ $user_detail['id'] }}">{{ $user_detail['name'] }}</a></h4>
     </div>
 
     <div class="calendar_form">

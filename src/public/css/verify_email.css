@@ -22,11 +22,6 @@
     line-height: 50px;
     border-radius:5px 5px 0 0;
 }
-.alert{
-    color: rgb(255, 0, 0);
-    margin: 5px;
-    text-align: center;
-}
 .button{
     text-align: end;
 }

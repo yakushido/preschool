@@ -1,0 +1,67 @@
+.teacher_lists{
+    width: 400px;
+    margin: 10px auto;
+    border-radius:5px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 70px;
+}
+.teacher_lists>h3{
+    height: 30px;
+    line-height: 30px;
+    border-radius:5px 5px 0 0;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+    background-color: #D07000;
+}
+.teacher_lists>div{
+    padding: 5px;
+}
+.teacher_lists input,
+.teacher_lists select{
+    width: 90%;
+    height: 30px;
+    border: none;
+    margin: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.team_lists>h3{
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+}
+.team_lists li{
+    list-style: none;
+    padding: 5px;
+}
+.team_lists_flex{
+    display: flex;
+    justify-content: end;
+    margin-right: 10px;
+}
+.team_lists button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
+
+@media screen and (min-width:769px) {
+    .teacher_lists{
+        width: 90%;
+    }
+    .team_lists>div{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .team_list{
+        width: 45%;
+    }
+}

@@ -1,0 +1,41 @@
+
+.user_update{
+    width: 350px;
+    margin: 10px auto;
+    border-radius:5px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.user_update>h3{
+    height: 30px;
+    line-height: 30px;
+    border-radius:5px 5px 0 0;
+    padding: 10px 20px;
+    text-align: center;
+    color: white;
+    background-color: #D07000;
+}
+.user_update>div{
+    padding: 5px;
+}
+.user_update input,
+.user_update select{
+    width: 90%;
+    height: 30px;
+    border: none;
+    margin: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+.user_update_flex{
+    display: flex;
+    justify-content: end;
+    margin: 5px;
+}
+.user_update button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 5px;
+}
